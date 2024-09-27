@@ -1,0 +1,63 @@
+<div class="notification-box" (click)="isNotification =!isNotification">
+  <app-common-svg-icon [icon]="'Bell'"></app-common-svg-icon>
+</div>
+<div class="onhover-show-div notification-dropdown" [class.active]="isNotification">
+  <h6 class="f-18 mb-0 dropdown-title">Notifications</h6>
+  <div class="notification-card">
+    <ul>
+      <li>
+        <div class="user-notification">
+          <div><img src="assets/images/avtar/2.jpg" alt="avatar"></div>
+          <div class="user-description"><a [routerLink]="['/social-app']">
+              <h4>You have new finical page design.</h4>
+            </a><span>Today 11:45pm</span></div>
+        </div>
+        <div class="notification-btn">
+          <button class="btn btn-pill btn-primary" type="button" title="btn btn-pill btn-primary">Accpet</button>
+          <button class="btn btn-pill btn-secondary" type="button" title="btn btn-pill btn-primary">Decline</button>
+        </div>
+        <div class="show-btn"><a [routerLink]="['/dashboard/minimal']"> <span>Show</span></a></div>
+      </li>
+      <li>
+        <div class="user-notification">
+          <div><img src="assets/images/avtar/17.jpg" alt="avatar"></div>
+          <div class="user-description"><a [routerLink]="['/social-app']">
+              <h4>Congrats! you all task for today.</h4>
+            </a><span>Today 01:05pm</span></div>
+        </div>
+        <div class="notification-btn">
+          <button class="btn btn-pill btn-primary" type="button" title="btn btn-pill btn-primary">Accpet</button>
+          <button class="btn btn-pill btn-secondary" type="button" title="btn btn-pill btn-primary">Decline</button>
+        </div>
+        <div class="show-btn"><a [routerLink]="['/dashboard/minimal']"> <span>Show</span></a></div>
+      </li>
+      <li>
+        <div class="user-notification">
+          <div> <img src="assets/images/avtar/18.jpg" alt="avatar"></div>
+          <div class="user-description"><a [routerLink]="['/letter-box']">
+              <h4>You have new in landing page design.</h4>
+            </a><span>Today 06:55pm</span></div>
+        </div>
+        <div class="notification-btn">
+          <button class="btn btn-pill btn-primary" type="button" title="btn btn-pill btn-primary">Accpet</button>
+          <button class="btn btn-pill btn-secondary" type="button" title="btn btn-pill btn-primary">Decline</button>
+        </div>
+        <div class="show-btn"><a [routerLink]="['/dashboard/minimal']"> <span>Show</span></a></div>
+      </li>
+      <li>
+        <div class="user-notification">
+          <div><img src="assets/images/avtar/19.jpg" alt="avatar"></div>
+          <div class="user-description"><a [routerLink]="['/letter-box']">
+              <h4>Congrats! you all task for today.</h4>
+            </a><span>Today 06:55pm</span></div>
+        </div>
+        <div class="notification-btn">
+          <button class="btn btn-pill btn-primary" type="button" title="btn btn-pill btn-primary">Accpet</button>
+          <button class="btn btn-pill btn-secondary" type="button" title="btn btn-pill btn-primary">Decline</button>
+        </div>
+        <div class="show-btn"> <a [routerLink]="['/dashboard/minimal']"> <span>Show</span></a></div>
+      </li>
+      <li> <a class="f-w-700" [routerLink]="['/letter-box']">Check all </a></li>
+    </ul>
+  </div>
+</div>

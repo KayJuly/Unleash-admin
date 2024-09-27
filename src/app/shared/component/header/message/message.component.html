@@ -1,0 +1,52 @@
+<div class="message position-relative" (click)="Message()">
+  <app-common-svg-icon [icon]="'Message'"></app-common-svg-icon>
+  <span class="rounded-pill badge-danger"></span>
+</div>
+<div class="onhover-show-div message-dropdown" [ngClass]="{'active' : MassageData == true}">
+  <h6 class="f-18 mb-0 dropdown-title">Message </h6>
+  <ul>
+    <li class="px-0 pt-0">
+      <div class="d-flex align-items-center">
+        <div class="message-img bg-light-primary">
+          <img src="assets/images/user/3.jpg" alt="">
+        </div>
+        <div class="flex-grow-1">
+          <h5><a [routerLink]="['/letter-box']">Emay Walter</a></h5>
+          <p>Do you want to go see movie?</p>
+        </div>
+        <div class="notification-right">
+          <app-feather-icons [icon]="'x'"></app-feather-icons>
+        </div>
+      </div>
+    </li>
+    <li class="px-0">
+      <div class="d-flex align-items-start">
+        <div class="message-img bg-light-primary">
+          <img src="assets/images/user/6.jpg" alt="">
+        </div>
+        <div class="flex-grow-1">
+          <h5> <a [routerLink]="['/letter-box']">Jason Borne</a></h5>
+          <p>Thank you for rating us.</p>
+        </div>
+        <div class="notification-right">
+          <app-feather-icons [icon]="'x'"></app-feather-icons>
+        </div>
+      </div>
+    </li>
+    <li class="px-0">
+      <div class="d-flex align-items-start">
+        <div class="message-img bg-light-primary">
+          <img src="assets/images/user/10.jpg" alt="">
+        </div>
+        <div class="flex-grow-1">
+          <h5> <a [routerLink]="['/letter-box']">Sarah Loren</a></h5>
+          <p>What`s the project report update?</p>
+        </div>
+        <div class="notification-right">
+          <app-feather-icons [icon]="'x'"></app-feather-icons>
+        </div>
+      </div>
+    </li>
+    <li> <a class="f-w-700" [routerLink]="['/chat/private-chat']">Check all</a></li>
+  </ul>
+</div>

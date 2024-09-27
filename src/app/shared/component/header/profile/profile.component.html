@@ -1,0 +1,16 @@
+<div class="d-flex align-items-center profile-media" (click)="isOpen =!isOpen">
+  <img class="b-r-25" src="assets/images/dashboard/profile.png" alt="">
+  <div class="flex-grow-1 user">
+    <span>Kay Shoji</span>
+    <p class="mb-0 font-nunito">Admin
+      <app-common-svg-icon [icon]="'header-arrow-down'"></app-common-svg-icon>
+    </p>
+  </div>
+</div>
+<ul class="profile-dropdown onhover-show-div" [class.active]="isOpen">
+  <li>
+    <a [routerLink]="'/user/profile-edit'">
+      <app-feather-icons [icon]="'user'"></app-feather-icons><span>Account </span>
+    </a>
+  </li>
+</ul>

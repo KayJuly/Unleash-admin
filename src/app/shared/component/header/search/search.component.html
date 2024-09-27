@@ -1,0 +1,30 @@
+<div class="form-group" (clickOutside)="clickOutside()">
+  <div class="Typeahead Typeahead--twitterUsers">
+    <div class="u-posRelative">
+      <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" [(ngModel)]="text"
+        [ngModelOptions]="{ standalone: true }" (keyup)="searchTerm(text)" placeholder="Type to Search ..">
+      <app-common-svg-icon [icon]="'search'" [class]="'search-bg svg-color'"></app-common-svg-icon>
+    </div>
+  </div>
+</div>
+@if(menuItems.length){
+<div class="Typeahead-menu custom-scrollbar" [class.is-open]="searchResult" id="search-outer" [class.open]="open">
+  @for(menuItem of menuItems | slice : 0 : 8; track menuItem){
+  <div class="ProfileCard u-cf" [routerLink]="menuItem.path">
+    <div class="ProfileCard-details">
+      <div class="ProfileCard-realName">
+        <div class="ProfileCard-avatar">
+          <app-svg-icon [icon]="menuItem.icon"></app-svg-icon>
+        </div>
+        <a class="realname" (click)="removeFix()">{{ menuItem.title }}</a>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+}
+<div class="Typeahead-menu is-open" [class.is-open]="searchResultEmpty">
+  <div class="tt-dataset tt-dataset-0">
+    <div class="EmptyMessage">Opps!! There are no result found.</div>
+  </div>
+</div>

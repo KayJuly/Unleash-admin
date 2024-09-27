@@ -1,0 +1,8 @@
+<div class="mode" (click)="layoutToggle()">
+  @if(!dark){
+    <app-common-svg-icon [icon]="'Sun'"></app-common-svg-icon>
+  }
+  @if(dark){
+    <app-common-svg-icon [icon]="'moon'"></app-common-svg-icon>
+  }
+</div>

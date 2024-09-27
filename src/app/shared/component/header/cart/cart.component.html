@@ -1,0 +1,36 @@
+<div class="cart-box" (click)="cart()">
+  <app-common-svg-icon [icon]="'Buy'"></app-common-svg-icon>
+</div>
+<div class="cart-dropdown onhover-show-div" [ngClass]="{'active' : products == true}">
+  <h6 class="f-18 mb-0 dropdown-title">Cart</h6>
+  <ul>
+    <li>
+      <div class="d-flex"><img class="img-fluid b-r-5 img-50" src="assets/images/ecommerce/05.jpg" alt="">
+        <div class="flex-grow-1"> <span>Women's Track Suit</span>
+          <h6 class="font-primary">8 x $65.00</h6>
+        </div>
+        <div class="close-circle">
+          <a class="bg-primary" href="javascript:void(0)">
+            <app-feather-icons [icon]="'x'"></app-feather-icons>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="d-flex"><img class="img-fluid b-r-5 img-50" src="assets/images/ecommerce/02.jpg" alt="">
+        <div class="flex-grow-1"><span>Men's Jacket</span>
+          <h6 class="font-primary">10 x $50.00</h6>
+        </div>
+        <div class="close-circle"><a class="bg-primary" href="javascript:void(0)">
+            <app-feather-icons [icon]="'x'"></app-feather-icons>
+          </a></div>
+      </div>
+    </li>
+    <li class="total">
+      <h6 class="mb-0">Order Total :<span class="f-right">$1020.00</span></h6>
+    </li>
+    <li class="text-center"> <a [routerLink]="['/ecommerce/cart']">
+        <button class="btn btn-outline-primary" type="button">View Cart</button></a><a
+        class="btn btn-primary view-checkout" [routerLink]="['/ecommerce/checkout']">Checkout </a></li>
+  </ul>
+</div>
