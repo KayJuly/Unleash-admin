@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "zono": {
+    "unleash": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/zono",
+            "outputPath": "dist/unleash",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js", "@angular/localize/init"],
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "zono:build:production"
+              "buildTarget": "unleash:build:production"
             },
             "development": {
-              "buildTarget": "zono:build:development"
+              "buildTarget": "unleash:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -2,7 +2,7 @@
 export const StackingToasts = [
     {
         id: 1,
-        theme: 'Zono theme',
+        theme: 'Unleash theme',
         dis: ' Hello, Im a web- designer.',
         time: 'Just now',
         class: 'primary',
@@ -41,7 +41,7 @@ export const StackingToasts = [
 export const TranslucentToasts = [
     {
         id: 1,
-        theme: 'Zono theme',
+        theme: 'Unleash theme',
         dis: ' Hello, Im a web- designer.',
         time: '11 mins ago',
         class: 'info',

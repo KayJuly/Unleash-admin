@@ -123,7 +123,7 @@ export const themeSales = [
         check: false
     },
     {
-        list: 'Zono',
+        list: 'Unleash',
         sales: '4.8K Sales',
         check: false
     },

@@ -45,7 +45,7 @@ export const allData : all[] = [
     {
         url : 'https://themeforest.net/user/pixelstrap/portfolio',
         title : 'Morbi feugiat mauris vel semper fringilla.',
-        desc : "Zono introduces a ielts coaching, toefl coaching, gre coaching, gmat coaching, sat coaching in surat.",
+        desc : "Unleash introduces a ielts coaching, toefl coaching, gre coaching, gmat coaching, sat coaching in surat.",
         rating : 3,
         votes : 590,
         type : 'Theme',
@@ -55,7 +55,7 @@ export const allData : all[] = [
     {
         url : 'https://themeforest.net/user/pixelstrap/portfolio',
         title : 'Morbi feugiat mauris vel semper fringilla.',
-        desc : "Zono introduces a ielts coaching, toefl coaching, gre coaching, gmat coaching, sat coaching in surat.",
+        desc : "Unleash introduces a ielts coaching, toefl coaching, gre coaching, gmat coaching, sat coaching in surat.",
         rating : 3,
         votes : 590,
         type : 'Theme',
@@ -75,7 +75,7 @@ export const allData : all[] = [
     {
         url : 'https://themeforest.net/user/pixelstrap/portfolio',
         title : 'Morbi feugiat mauris vel semper fringilla.',
-        desc : "Zono introduces a ielts coaching, toefl coaching, gre coaching, gmat coaching, sat coaching in surat.",
+        desc : "Unleash introduces a ielts coaching, toefl coaching, gre coaching, gmat coaching, sat coaching in surat.",
         rating : 3,
         votes : 590,
         type : 'Theme',
@@ -107,7 +107,7 @@ export const videosData : video[] = [
             {
                 url : 'https://themeforest.net/user/pixelstrap/portfolio',
                 youtubeUrl : 'https://www.youtube.com/embed/-L4gEk7cOfk',
-                title : 'Zono introduces a IELTS Coaching, TOEFL Coaching, GRE Coaching.',
+                title : 'Unleash introduces a IELTS Coaching, TOEFL Coaching, GRE Coaching.',
                 rating : 3,
                 votes : 590,
                 type : 'Theme'

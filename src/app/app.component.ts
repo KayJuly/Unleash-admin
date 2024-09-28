@@ -11,5 +11,5 @@ import { TapToTopComponent } from "./shared/component/tap-to-top/tap-to-top.comp
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'zono';
+  title = 'unleash';
 }
