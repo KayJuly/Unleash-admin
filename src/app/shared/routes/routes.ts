@@ -12,9 +12,16 @@ export const dashData: Routes = [
     {
         path: 'users-page',
         data: {
-            breadcrumb: 'test'
+            breadcrumb: 'users'
         },
         loadChildren: () => import('../../components/pages/users-page/users-page.routes')
+    },
+    {
+        path: 'trainings-page',
+        data: {
+            breadcrumb: 'trainings'
+        },
+        loadChildren: () => import('../../components/pages/trainings-page/trainings-page.routes')
     },
     // {
     //     path: "users",

@@ -10,7 +10,7 @@
   --ag-cell-horizontal-padding: 15px;
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 }
-
+/*#212529*/
 .ag-theme-alpine .ag-row {
   height: 50px !important; /* 行の高さを指定 */
   background-color: red;

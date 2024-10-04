@@ -52,8 +52,7 @@ export class NavService {
       type: "sub",
       active: false,
       children: [
-        { path: "/users-page", title: "Users List", type: "link" },
-        { path: "/users-page", title: "User progress", type: "link" },
+        { path: "/users-page", title: "Users Management", type: "link" },
       ],
     },
     {
@@ -64,11 +63,11 @@ export class NavService {
       type: "sub",
       active: false,
       children: [
-        { path: "/user/users-list", title: "Trainings List", type: "link" },
-        { path: "/user/user-progress", title: "Trainings List", type: "link" },
+        { path: "/trainings-page", title: "Trainings Management", type: "link" },
+        { path: "/monitoring-training", title: "Monitoring training", type: "link" },
       ],
     },
-    { level: 1, id: 12, path: "/task", bookmark: true, title: "Tasks", icon: "task", type: "link" },
+    // { level: 1, id: 12, path: "/task", bookmark: true, title: "Tasks", icon: "task", type: "link" },
   ]
   horizontalMenu: Menu[] = [{}];
   item = new BehaviorSubject<Menu[]>(this.menuItems);
