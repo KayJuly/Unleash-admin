@@ -1,0 +1,48 @@
+
+
+.ag-theme-alpine {
+  --ag-header-height: 50px;
+  --ag-header-foreground-color: #333;
+  --ag-header-background-color: #f8f9fa;
+  --ag-header-cell-hover-background-color: #e9ecef;
+  --ag-row-border-color: #dee2e6;
+  --ag-row-hover-color: #f8f9fa;
+  --ag-cell-horizontal-padding: 15px;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.ag-theme-alpine .ag-row {
+  height: 50px !important; /* 行の高さを指定 */
+  background-color: red;
+}
+
+.ag-theme-alpine .ag-cell {
+  display: flex !important;
+  align-items: center !important; /* 垂直方向の中央揃え */
+  justify-content: center !important; /* 横方向の中央揃え */
+  padding: 0 10px !important; /* セル内の余白を調整 */
+  box-sizing: border-box !important;
+}
+
+.ag-theme-alpine .ag-row:nth-child(even) {
+  background-color: #f8f9fa; /* 偶数行の背景色 */
+}
+
+.ag-theme-alpine .ag-row:nth-child(odd) {
+  background-color: #ffffff; /* 奇数行の背景色 */
+}
+
+.status-in-progress {
+  color: orange;
+}
+
+.status-done {
+  color: green;
+}
+
+.status-pending {
+  color: red;
+}
+
+
+

@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 
 export const dashData: Routes = [
@@ -7,9 +7,20 @@ export const dashData: Routes = [
         data: {
             breadcrumb: 'Pages'
         },
-        loadChildren: () => import('../../component/sample-page/sample-page.routes')
+        loadChildren: () => import('../../components/sample-page/sample-page.routes')
     },
-
-
-
+    {
+        path: 'users-page',
+        data: {
+            breadcrumb: 'test'
+        },
+        loadChildren: () => import('../../components/pages/users-page/users-page.routes')
+    },
+    // {
+    //     path: "users",
+    //     data: {
+    //         breadcrumb: "Users",
+    //     },
+    //     loadChildren: () => import("../../components/pages/admin.routes"),
+    // },
 ]

@@ -30,6 +30,8 @@
     "@ng-select/ng-select": "^13.4.1",
     "@ngx-translate/http-loader": "^8.0.0",
     "@types/feather-icons": "^4.29.4",
+    "ag-grid-angular": "^32.2.1",
+    "ag-grid-community": "^32.2.1",
     "angular-calendar": "^0.31.1",
     "angularx-flatpickr": "^7.3.0",
     "bootstrap": "^5.3.3",
@@ -50,7 +52,7 @@
     "ngx-owl-carousel-o": "^18.0.0",
     "ngx-print": "^1.5.1",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.12.2",
+    "sweetalert2": "^11.6.13",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

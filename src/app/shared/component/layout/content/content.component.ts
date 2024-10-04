@@ -4,7 +4,7 @@ import { HideNavScrollService } from '../../../services/hide-nav-scroll.service'
 import { LayoutService } from '../../../services/layout.service';
 import { NavService } from '../../../services/nav.service';
 import { FooterComponent } from '../../footer/footer.component';
-import { BreadcrumbComponent } from '../../breadcrumb/breadcrumb.component';
+// import { BreadcrumbComponent } from '../../breadcrumb/breadcrumb.component';
 import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { HeaderComponent } from '../../header/header.component';
 import { NgClass, NgStyle } from '@angular/common';
@@ -14,7 +14,7 @@ import { NgClass, NgStyle } from '@angular/common';
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.scss'],
     standalone: true,
-    imports: [NgClass, NgStyle, HeaderComponent, SidebarComponent, BreadcrumbComponent, RouterOutlet, FooterComponent]
+    imports: [NgClass, NgStyle, HeaderComponent, SidebarComponent, RouterOutlet, FooterComponent]
 })
 
 export class ContentComponent {

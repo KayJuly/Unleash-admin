@@ -52,8 +52,8 @@ export class NavService {
       type: "sub",
       active: false,
       children: [
-        { path: "/user/users-list", title: "Users List", type: "link" },
-        { path: "/user/user-progress", title: "User progress", type: "link" },
+        { path: "/users-page", title: "Users List", type: "link" },
+        { path: "/users-page", title: "User progress", type: "link" },
       ],
     },
     {
