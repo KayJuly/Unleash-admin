@@ -7,14 +7,21 @@
         
         <!-- list header-->
         <div class="card-header table-wrapper d-flex justify-content-between align-items-center">
-          <h4 class="mb-0">Users Progress</h4>
-          <div>
-            <a type="button" class="btn btn btn-primary me-2" (click)="onBtExport()">
-              Export
-            </a>
-            <a type="button" class="btn btn btn-primary" (click)="onBtExport()">
-              Import
-            </a>
+          <h4 class="mb-0">Users Profile</h4>
+          <div class="d-flex align-items-center">
+            <div class="me-4">
+              <a type="button" class="btn btn-primary me-2" (click)="onExport()">
+                Export
+              </a>
+              <a type="button" class="btn btn-primary" (click)="onImport()">
+                Import
+              </a>
+            </div>
+            <div>
+              <a type="button" class="btn btn-outline-primary btn-icon" (click)="onAddNew()">
+                <fa-icon [icon]="faPlus"></fa-icon> Add
+              </a>
+            </div>
           </div>
         </div>
         

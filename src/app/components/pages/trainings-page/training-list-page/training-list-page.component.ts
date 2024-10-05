@@ -4,17 +4,20 @@ import {ColDef, GridReadyEvent, GridApi, CellClassParams} from 'ag-grid-communit
 import {trainingData} from '../../common/data/trainings';
 import {UserTypeBadgeCellRenderer} from '../../common/user-type-badge-cell-renderer';
 import {ActionsCellRenderer} from "../../common/actions-cell-renderer";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
     selector: 'app-users-page',
     templateUrl: './training-list-page.component.html',
     styleUrls: ['./training-list-page.component.scss'],
     standalone: true,
-    imports: [AgGridAngular, UserTypeBadgeCellRenderer],
+    imports: [AgGridAngular, UserTypeBadgeCellRenderer, FaIconComponent],
 })
 export class TrainingListPageComponent {
     @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
     private gridApi!: GridApi<any>;
+    faPlus = faPlus;
 
     columnDefs: ColDef[] = [
         {
@@ -58,7 +61,17 @@ export class TrainingListPageComponent {
     };
 
     onExport() {
+        console.log('Export clicked');
         this.gridApi.exportDataAsCsv();
+    }
+
+    onImport() {
+        console.log('Import clicked');
+        this.gridApi.exportDataAsCsv();
+    }
+
+    onAddNew() {
+        console.log('Add clicked');
     }
 
     onGridReady(params: GridReadyEvent<any>) {

@@ -6,17 +6,20 @@ import {UserTypeBadgeCellRenderer} from '../../common/user-type-badge-cell-rende
 import {quizBadgeCellRenderer} from '../../common/quiz-badge-cell-renderer';
 import {TrainingsCellRenderer} from "../../common/trainings-cell-renderer";
 import {ActionsCellRenderer} from "../../common/actions-cell-renderer";
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
     selector: 'app-users-progress-page',
     templateUrl: './users-progress-page.component.html',
     styleUrls: ['./users-progress-page.component.scss'],
     standalone: true,
-    imports: [AgGridAngular],
+    imports: [AgGridAngular, FaIconComponent],
 })
 export class UsersProgressPageComponent {
     @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
     private gridApi!: GridApi<any>;
+    faPlus = faPlus;
 
     columnDefs: ColDef[] = [
         {
@@ -79,14 +82,24 @@ export class UsersProgressPageComponent {
         flex: 1
     };
 
-    onBtExport() {
+    onExport() {
+        console.log('Export clicked');
         this.gridApi.exportDataAsCsv();
+    }
+
+    onImport() {
+        console.log('Import clicked');
+        this.gridApi.exportDataAsCsv();
+    }
+
+    onAddNew() {
+        console.log('Add clicked');
     }
 
     onGridReady(params: GridReadyEvent<any>) {
         this.gridApi = params.api;
     }
 
-    protected readonly userProgressData = userProgressData;
 
+    protected readonly userProgressData = userProgressData;
 }

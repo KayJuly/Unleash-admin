@@ -41,7 +41,8 @@ export class NavService {
       type: "sub",
       active: true,
       children: [
-        { path: "/dashboard/calender", title: "Calender", type: "link" },
+        { path: "/dashboard-page", title: "Dashboard", type: "link" },
+        { path: "/dashboard-page/calendar", title: "Calendar", type: "link" },
       ],
     },
     {
@@ -65,7 +66,7 @@ export class NavService {
       active: false,
       children: [
         { path: "/trainings-page", title: "Trainings", type: "link" },
-        { path: "/trainings-page/monitoring", title: "Monitoring training", type: "link" },
+        { path: "/trainings-page/monitor-training", title: "Monitoring training", type: "link" },
       ],
     },
     // { level: 1, id: 12, path: "/task", bookmark: true, title: "Tasks", icon: "task", type: "link" },

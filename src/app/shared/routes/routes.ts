@@ -23,11 +23,11 @@ export const dashData: Routes = [
         },
         loadChildren: () => import('../../components/pages/trainings-page/trainings-page.routes')
     },
-    // {
-    //     path: "users",
-    //     data: {
-    //         breadcrumb: "Users",
-    //     },
-    //     loadChildren: () => import("../../components/pages/admin.routes"),
-    // },
+    {
+        path: "dashboard-page",
+        data: {
+            breadcrumb: "dashboard",
+        },
+        loadChildren: () => import("../../components/pages/dashboard-page/dashboard-page.routes"),
+    },
 ]

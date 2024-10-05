@@ -6,8 +6,8 @@ export const trainingListRoutes: Routes = [
         path: '',
         component: TrainingListPageComponent,
         data: {
-            title: 'Users',
-            breadcrumb: 'Users'
+            title: 'Training List',
+            breadcrumb: 'Training List'
         }
     }
 ] as Routes;
