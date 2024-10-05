@@ -52,7 +52,8 @@ export class NavService {
       type: "sub",
       active: false,
       children: [
-        { path: "/users-page", title: "Users Management", type: "link" },
+        { path: "/users-page", title: "Profile", type: "link" },
+        { path: "/users-page/users-progress", title: "Progress", type: "link" },
       ],
     },
     {
@@ -69,7 +70,9 @@ export class NavService {
     },
     // { level: 1, id: 12, path: "/task", bookmark: true, title: "Tasks", icon: "task", type: "link" },
   ]
+
   horizontalMenu: Menu[] = [{}];
+
   item = new BehaviorSubject<Menu[]>(this.menuItems);
   horizontalItem = new BehaviorSubject<Menu[]>(this.horizontalMenu);
 }

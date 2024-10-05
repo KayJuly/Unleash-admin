@@ -1,3 +1,27 @@
+//
+// MongoDB User Master Schema
+//
+
+// {
+//     _id: ObjectId,
+//     name: {
+//         firstName: String,
+//         lastName: String
+//     },
+//     email: {
+//         type: String,
+//         unique: true
+//     },
+//     phone: String,
+//     registrationDate: Date,
+//     userType: {
+//         type: String,
+//         enum: ['curriculumStudent', 'extracurricularStudent', 'staff', 'visitor']
+//     },
+//         createdAt: Date,
+//         updatedAt: Date
+// }
+
 export const userData = [
     {
         date: '26/08/2024',
@@ -5,9 +29,8 @@ export const userData = [
         upi: 'hlhy1234',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
-        type: 'Extracurricular',
-        status: 'In progress',
-        progress: 30
+        type: 'Extracurricular Student',
+        degree: 'Bachelor of Science'
     },
     {
         date: '26/05/2024',
@@ -15,9 +38,8 @@ export const userData = [
         upi: 'kssh3452',
         email: 'kssh3452@aucklanduni.com',
         phone: '+64 9152639845',
-        type: 'Extracurricular',
-        status: 'In progress',
-        progress: 30
+        type: 'Curriculum Student',
+        degree: 'Bachelor of Commerce'
     },
     {
         date: '24/3/2024',
@@ -26,8 +48,7 @@ export const userData = [
         email: 'lyhy1234@aucklanduni.com',
         phone: '+64 9152639845',
         type: 'Staff',
-        status: 'In progress',
-        progress: 20
+        degree: ''
     },
     {
         date: '11/05/2024',
@@ -36,8 +57,7 @@ export const userData = [
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
         type: 'Visitor',
-        status: 'Done',
-        progress: 100
+        degree: ''
     },
     {
         date: '13/05/2024',
@@ -45,9 +65,8 @@ export const userData = [
         upi: 'rohk1212',
         email: 'rohk1212@aucklanduni.com',
         phone: '+64 02719191',
-        type: 'Extracurricular',
-        status: 'Done',
-        progress: 100
+        type: 'Extracurricular Student',
+        degree: 'Bachelor of Science'
     },
     {
         date: '06/05/2021',
@@ -55,9 +74,8 @@ export const userData = [
         upi: 'kssh3452',
         email: 'kssh3452@aucklanduni.com',
         phone: '+64 9152639845',
-        type: 'Extracurricular',
-        status: 'In progress',
-        progress: 60
+        type: 'Extracurricular Student',
+        degree: 'Bachelor of Science'
     },
     {
         date: '26/09/2024',
@@ -65,9 +83,8 @@ export const userData = [
         upi: 'hlhy1234',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
-        type: 'Extracurricular',
-        status: 'Done',
-        progress: 100
+        type: 'Curriculum Student',
+        degree: 'Bachelor of Science'
     },
     {
         date: '12/04/2022',
@@ -76,8 +93,7 @@ export const userData = [
         email: 'cyjs3434@aucklanduni.com',
         phone: '020 12345678',
         type: 'Staff',
-        status: 'In progress',
-        progress: 60
+        degree: ''
     },
     {
         date: '11/02/2022',
@@ -86,8 +102,7 @@ export const userData = [
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
         type: 'Staff',
-        status: 'Done',
-        progress: 100
+        degree: ''
     },
     {
         date: '30/01/2020',
@@ -95,8 +110,7 @@ export const userData = [
         upi: 'arhk0909',
         email: 'arhk0909@aucklanduni.com',
         phone: '+64 02719191',
-        type: 'Extracurricular',
-        status: 'Done',
-        progress: 100
+        type: 'Extracurricular Student',
+        degree: 'Bachelor of Art'
     },
 ]

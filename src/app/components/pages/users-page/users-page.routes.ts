@@ -1,4 +1,5 @@
 import {Routes} from '@angular/router';
+import {usersProgressRoutes} from "./users-progress-page/users-progress-page.routes";
 
 export default [
     {
@@ -8,6 +9,15 @@ export default [
         data: {
             title: "Users",
             breadcrumb: "Users",
+        },
+    },
+    {
+        path: "users-progress",
+        loadChildren: () =>
+            import("./users-progress-page/users-progress-page.routes").then((m) => m.usersProgressRoutes),
+        data: {
+            title: "Users Progress",
+            breadcrumb: "Users Progress",
         },
     }
 ] as Routes;

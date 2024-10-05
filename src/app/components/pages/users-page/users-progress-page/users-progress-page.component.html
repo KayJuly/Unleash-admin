@@ -7,12 +7,12 @@
         
         <!-- list header-->
         <div class="card-header table-wrapper d-flex justify-content-between align-items-center">
-          <h4 class="mb-0">Users Profile</h4>
+          <h4 class="mb-0">Users Progress</h4>
           <div>
-            <a type="button" class="btn btn btn-primary me-2" (click)="onExport()">
+            <a type="button" class="btn btn btn-primary me-2" (click)="onBtExport()">
               Export
             </a>
-            <a type="button" class="btn btn btn-primary" (click)="onExport()">
+            <a type="button" class="btn btn btn-primary" (click)="onBtExport()">
               Import
             </a>
           </div>
@@ -23,7 +23,7 @@
             <ag-grid-angular
                 style="width: 100%; height: 100%;"
                 class="ag-theme-quartz"
-                [rowData]="userData"
+                [rowData]="userProgressData"
                 [columnDefs]="columnDefs"
                 [defaultColDef]="defaultColDef"
                 domLayout='autoHeight'
