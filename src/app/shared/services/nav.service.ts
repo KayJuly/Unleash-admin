@@ -65,7 +65,9 @@ export class NavService {
       type: "sub",
       active: false,
       children: [
-        { path: "/trainings-page", title: "Trainings", type: "link" },
+        { path: "/trainings-page", title: "Training courses", type: "link" },
+        { path: "/trainings-page/course-registration", title: "Course registration", type: "link" },
+        { path: "/trainings-page/calendar", title: "Courses Calendar", type: "link" },
         { path: "/trainings-page/monitor-training", title: "Monitoring training", type: "link" },
       ],
     },

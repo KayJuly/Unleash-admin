@@ -4,8 +4,8 @@
 
 // {
 //     _id: ObjectId,
-//     courses: String,
-//     trainer: String,
+//     course: String,
+//     instructor: String,
 //     email: {
 //         type: String,
 //         unique: true
@@ -16,7 +16,7 @@
 
 export const trainingData = [
     {
-        courses: '3D Printer',
+        course: '3D Printer',
         instructor: 'Kason Sanchez',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
@@ -24,7 +24,7 @@ export const trainingData = [
         description: 'Create models and prototypes quickly and easily.',
     },
     {
-        courses: 'Laser Cutter',
+        course: 'Laser Cutter',
         instructor: 'Lay Haynes',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
@@ -32,7 +32,7 @@ export const trainingData = [
         description:'Cut out designs or engrave materials such as acrylic and wood.'
     },
     {
-        courses: 'Vinyl cutter',
+        course: 'Vinyl cutter',
         instructor: 'Lay Haynes',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
@@ -40,7 +40,7 @@ export const trainingData = [
         description: 'Create, cut and apply vinyl designs for T-shirts and more.',
     },
     {
-        courses: 'Sewing machines',
+        course: 'Sewing machines',
         instructor: 'Kason Sanchez',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
@@ -48,7 +48,7 @@ export const trainingData = [
         description: 'Create a unique masterpiece',
     },
     {
-        courses: 'CNC Router',
+        course: 'CNC Router',
         instructor: 'Kason Sanchez',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
@@ -56,7 +56,7 @@ export const trainingData = [
         description: 'Cut and shape 3D objects out of hard block material. ',
     },
     {
-        courses: 'Soldering station',
+        course: 'Soldering station',
         instructor: 'Kason Sanchez',
         email: 'hlhy1234@aucklanduni.com',
         phone: '+64 9152639845',
