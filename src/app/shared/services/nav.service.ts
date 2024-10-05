@@ -64,8 +64,8 @@ export class NavService {
       type: "sub",
       active: false,
       children: [
-        { path: "/trainings-page", title: "Trainings Management", type: "link" },
-        { path: "/monitoring-training", title: "Monitoring training", type: "link" },
+        { path: "/trainings-page", title: "Trainings", type: "link" },
+        { path: "/trainings-page/monitoring", title: "Monitoring training", type: "link" },
       ],
     },
     // { level: 1, id: 12, path: "/task", bookmark: true, title: "Tasks", icon: "task", type: "link" },

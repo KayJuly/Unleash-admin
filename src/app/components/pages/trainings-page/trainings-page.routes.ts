@@ -4,10 +4,10 @@ export default [
     {
         path: "",
         loadChildren: () =>
-            import("./trainings-list-page/trainings-list-page.routes").then((m) => m.trainingsListRoutes),
+            import("./training-list-page/training-list-page.routes").then((m) => m.trainingListRoutes),
         data: {
-            title: "Trainings Management",
-            breadcrumb: "Trainings Management",
+            title: "Trainings",
+            breadcrumb: "Trainings",
         },
     }
 ] as Routes;
