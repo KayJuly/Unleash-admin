@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <!-- Left Sidebar -->
+    <!-- Left Side -->
     <div class="col-md-3">
-      <!-- Small Calendar -->
+      <!-- Calendar -->
       <div class="card mb-3">
         <div class="card-header">
           <div class="d-flex justify-content-between align-items-center">
@@ -26,7 +26,7 @@
           </mwl-calendar-month-view>        </div>
       </div>
       
-      <!-- Event List -->
+      <!-- Selected events -->
       <div class="card">
         <div class="card-header">
           <h5 class="card-title mb-0">Events for {{ viewDate | date:'mediumDate' }}</h5>
@@ -80,7 +80,7 @@
     </div>
   </div>
 </div>
-<!-- Custom Cell Template for Calendar -->
+
 <ng-template #customCellTemplate let-day="day" let-locale="locale">
   <div class="cal-cell-top d-flex flex-column justify-content-between h-100">
     <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>

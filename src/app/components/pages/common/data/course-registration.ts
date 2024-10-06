@@ -45,7 +45,7 @@
 export const courseRegistrationData = [
     {
         course: '3D Printer',
-        date: '2024-05-26',
+        date: '2024-09-14',
         time: {start: "09:00", end: "12:00"},
         instructor: "Kason Sanchez",
         participants: 12,
@@ -54,7 +54,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Laser Cutter',
-        date: '2024-06-15',
+        date: '2024-09-21',
         time: {start: "14:00", end: "17:00"},
         instructor: "Lay Haynes",
         participants: 8,
@@ -63,7 +63,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Vinyl cutter',
-        date: '2024-07-03',
+        date: '2024-09-23',
         time: {start: "10:00", end: "13:00"},
         instructor: "Lay Haynes",
         participants: 6,
@@ -72,7 +72,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Sewing machines',
-        date: '2024-07-20',
+        date: '2024-10-01',
         time: {start: "13:00", end: "16:00"},
         instructor: "Kason Sanchez",
         participants: 10,
@@ -81,7 +81,7 @@ export const courseRegistrationData = [
     },
     {
         course: '3D Printer',
-        date: '2024-09-10',
+        date: '2024-10-7',
         time: {start: "10:00", end: "13:00"},
         instructor: "Kason Sanchez",
         participants: 15,
@@ -90,7 +90,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Laser Cutter',
-        date: '2024-09-10',
+        date: '2024-10-7',
         time: {start: "14:30", end: "17:30"},
         instructor: "Lay Haynes",
         participants: 9,
@@ -99,7 +99,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Vinyl cutter',
-        date: '2024-09-10',
+        date: '2024-10-7',
         time: {start: "09:00", end: "12:00"},
         instructor: "Lay Haynes",
         participants: 8,
@@ -108,7 +108,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Sewing machines',
-        date: '2024-11-02',
+        date: '2024-10-9',
         time: {start: "13:30", end: "16:30"},
         instructor: "Kason Sanchez",
         participants: 11,
@@ -117,7 +117,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'CNC Router',
-        date: '2024-11-20',
+        date: '2024-10-10',
         time: {start: "10:00", end: "13:00"},
         instructor: "Kason Sanchez",
         participants: 6,
@@ -126,8 +126,8 @@ export const courseRegistrationData = [
     },
     {
         course: 'Soldering station',
-        date: '2024-12-08',
-        time: {start: "15:30", end: "18:30"},
+        date: '2024-10-10',
+        time: {start: "10:00", end: "13:00"},
         instructor: "Kason Sanchez",
         participants: 9,
         maxParticipants: 10,
@@ -135,7 +135,7 @@ export const courseRegistrationData = [
     },
     {
         course: '3D Printer',
-        date: '2025-01-05',
+        date: '2024-10-12',
         time: {start: "09:30", end: "12:30"},
         instructor: "Kason Sanchez",
         participants: 13,
@@ -144,7 +144,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Laser Cutter',
-        date: '2025-01-23',
+        date: '2024-10-12',
         time: {start: "14:00", end: "17:00"},
         instructor: "Lay Haynes",
         participants: 7,
@@ -153,7 +153,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Vinyl cutter',
-        date: '2025-02-10',
+        date: '2024-10-21',
         time: {start: "10:30", end: "13:30"},
         instructor: "Lay Haynes",
         participants: 5,
@@ -162,7 +162,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Sewing machines',
-        date: '2025-02-28',
+        date: '2024-10-22',
         time: {start: "13:00", end: "16:00"},
         instructor: "Kason Sanchez",
         participants: 12,
@@ -171,7 +171,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'CNC Router',
-        date: '2025-03-18',
+        date: '2024-10-24',
         time: {start: "09:00", end: "12:00"},
         instructor: "Kason Sanchez",
         participants: 4,
@@ -180,7 +180,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Soldering station',
-        date: '2025-04-05',
+        date: '2024-10-24',
         time: {start: "15:00", end: "18:00"},
         instructor: "Kason Sanchez",
         participants: 8,
@@ -189,7 +189,7 @@ export const courseRegistrationData = [
     },
     {
         course: '3D Printer',
-        date: '2025-04-23',
+        date: '2024-10-25',
         time: {start: "10:00", end: "13:00"},
         instructor: "Kason Sanchez",
         participants: 14,
@@ -198,7 +198,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Laser Cutter',
-        date: '2025-05-11',
+        date: '2024-10-25',
         time: {start: "14:30", end: "17:30"},
         instructor: "Lay Haynes",
         participants: 10,
