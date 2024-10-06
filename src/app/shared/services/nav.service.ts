@@ -68,7 +68,7 @@ export class NavService {
         { path: "/trainings-page", title: "Training courses", type: "link" },
         { path: "/trainings-page/course-registration", title: "Course registration", type: "link" },
         { path: "/trainings-page/calendar", title: "Courses Calendar", type: "link" },
-        { path: "/trainings-page/monitor-training", title: "Monitoring training", type: "link" },
+        { path: "/trainings-page/monitor-training", title: "Check-in Monitoring", type: "link" },
       ],
     },
     // { level: 1, id: 12, path: "/task", bookmark: true, title: "Tasks", icon: "task", type: "link" },

@@ -1,82 +1,197 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {AgGridAngular} from 'ag-grid-angular';
-import {ColDef, GridReadyEvent, GridApi, CellClassParams} from 'ag-grid-community';
-import {trainingData} from '../../common/data/trainings';
-import {UserTypeBadgeCellRenderer} from '../../common/user-type-badge-cell-renderer';
-import {ActionsCellRenderer} from "../../common/actions-cell-renderer";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AgGridAngular } from 'ag-grid-angular';
+import { ColDef, GridReadyEvent, GridApi } from 'ag-grid-community';
+import { CalendarEvent, CalendarView, CalendarModule } from 'angular-calendar';
+import { Subject } from 'rxjs';
+import { courseRegistrationData } from '../../common/data/course-registration';
+import { addMonths, subMonths } from 'date-fns';
+
+interface EventDetails {
+    id: string;
+    instructor: string;
+    participants: number;
+    maxParticipants: number;
+    status: string;
+}
 
 @Component({
-    selector: 'app-users-page',
+    selector: 'app-monitor-training-page',
     templateUrl: './monitor-training-page.component.html',
     styleUrls: ['./monitor-training-page.component.scss'],
     standalone: true,
-    imports: [AgGridAngular, UserTypeBadgeCellRenderer, FaIconComponent],
+    imports: [
+        CommonModule,
+        AgGridAngular,
+        CalendarModule
+    ]
 })
-export class MonitorTrainingPageComponent {
+export class MonitorTrainingPageComponent implements OnInit {
     @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
-    private gridApi!: GridApi<any>;
-    faPlus = faPlus;
+    private gridApi!: GridApi;
 
+    attendanceData: any[] = [];
+    attendanceColumnDefs: ColDef[] = [
+        { field: 'studentId', headerName: 'Student ID' },
+        { field: 'name', headerName: 'Name' },
+        { field: 'checkInTime', headerName: 'Check-in Time' },
+        { field: 'status', headerName: 'Status' }
+    ];
+    // Calendar properties
+    view: CalendarView = CalendarView.Month;
+    viewDate: Date = new Date();
+    events: CalendarEvent[] = [];
+    filteredEvents: CalendarEvent[] = [];
+    selectedEvent: CalendarEvent | null = null;
+    refresh: Subject<any> = new Subject();
+
+    // Additional event details
+    eventDetails: Map<string, EventDetails> = new Map();
+
+    // AG Grid properties
     columnDefs: ColDef[] = [
-        {
-            field: 'courses',
-            headerName: 'Courses Name',
-            flex: 1,
-            minWidth: 150,
-            editable: true,
-        },
-        {
-            field: 'instructor',
-            headerName: 'Instructor',
-            flex: 1,
-            minWidth: 150,
-            editable: true,
-        },
-        {field: 'email', headerName: 'Email', flex: 1, minWidth: 150, editable: true},
-        {field: 'phone', headerName: 'Phone', flex: 1, minWidth: 150, editable: true},
-        {field: 'location', headerName: 'Location', minWidth: 150, flex: 1, editable: true},
-        {
-            headerName: 'Actions',
-            cellRenderer: ActionsCellRenderer,
-            cellRendererParams: {
-                clicked: (field: string) => {
-                    alert(`${field} was clicked`);
-                },
-            },
-            width: 100, maxWidth: 100,
-            flex: 0.5,
-            sortable: false,
-            filter: false
-        }
+        { field: 'course', headerName: 'Course Name' },
+        { field: 'dateTime', headerName: 'Date and Time' }
     ];
 
     defaultColDef: ColDef = {
         sortable: true,
         filter: true,
-        resizable: true,
-        minWidth: 100,
-        flex: 1
+        resizable: true
     };
 
-    onExport() {
-        console.log('Export clicked');
-        this.gridApi.exportDataAsCsv();
+    rowData: any[] = [];
+
+    constructor() {}
+
+    ngOnInit() {
+        this.loadEvents();
+        this.attendanceData = []; // Initialize with an empty array
+    }
+    loadEvents() {
+        this.events = courseRegistrationData.map((registration, index) => {
+            const startDate = new Date(registration.date + 'T' + registration.time.start);
+            const endDate = new Date(registration.date + 'T' + registration.time.end);
+
+            const id = index.toString();
+            this.eventDetails.set(id, {
+                id,
+                instructor: registration.instructor,
+                participants: registration.participants,
+                maxParticipants: registration.maxParticipants,
+                status: registration.status
+            });
+
+            return {
+                id,
+                start: startDate,
+                end: endDate,
+                title: registration.course,
+                color: this.getEventColor(registration.status)
+            };
+        });
+
+        this.updateFilteredEvents();
     }
 
-    onImport() {
-        console.log('Import clicked');
-        this.gridApi.exportDataAsCsv();
+    getEventColor(status: string): any {
+        switch (status) {
+            case 'Completed':
+                return { primary: '#4caf50', secondary: '#c8e6c9' };
+            case 'In Progress':
+                return { primary: '#2196f3', secondary: '#bbdefb' };
+            case 'Scheduled':
+                return { primary: '#ff9800', secondary: '#ffe0b2' };
+            case 'Cancelled':
+                return { primary: '#f44336', secondary: '#ffcdd2' };
+            default:
+                return { primary: '#9e9e9e', secondary: '#f5f5f5' };
+        }
     }
 
-    onAddNew() {
-        console.log('Add clicked');
+    dayClicked({ date }: { date: Date }): void {
+        this.viewDate = date;
+        this.updateFilteredEvents();
     }
 
-    onGridReady(params: GridReadyEvent<any>) {
+    previousMonth(): void {
+        this.viewDate = subMonths(this.viewDate, 1);
+        this.updateFilteredEvents();
+    }
+
+    nextMonth(): void {
+        this.viewDate = addMonths(this.viewDate, 1);
+        this.updateFilteredEvents();
+    }
+
+    updateFilteredEvents() {
+        this.filteredEvents = this.events.filter(event =>
+            event.start.toDateString() === this.viewDate.toDateString()
+        );
+        this.updateRowData();
+    }
+
+    updateRowData() {
+        this.rowData = this.filteredEvents.map(event => ({
+            course: event.title,
+            dateTime: this.formatEventDateTime(event)
+        }));
+
+        if (this.gridApi) {
+            this.gridApi.setGridOption('rowData', this.rowData);
+        }
+    }
+
+    // New method to safely format event date and time
+    formatEventDateTime(event: CalendarEvent): string {
+        const startTime = event.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const endTime = event.end ? event.end.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'N/A';
+        return `${event.start.toLocaleDateString()} ${startTime} - ${endTime}`;
+    }
+
+    // selectEvent(event: CalendarEvent) {
+    //     this.selectedEvent = event;
+    // }
+
+    onGridReady(params: GridReadyEvent) {
         this.gridApi = params.api;
+        this.updateRowData();
     }
 
-    protected readonly trainingData = trainingData;
+    getEventDetails(eventId: string | number | undefined): EventDetails | undefined {
+        if (eventId === undefined) return undefined;
+        return this.eventDetails.get(eventId.toString());
+    }
+
+    selectEvent(event: CalendarEvent | any) {
+        let selectedCalendarEvent: CalendarEvent | null = null;
+
+        if ('start' in event) {
+            // This is a CalendarEvent
+            selectedCalendarEvent = event;
+        } else {
+            // This is data from the grid
+            selectedCalendarEvent = this.events.find(e => e.title === event.course) || null;
+        }
+
+        if (selectedCalendarEvent) {
+            this.selectedEvent = selectedCalendarEvent;
+            this.loadAttendanceData(selectedCalendarEvent);
+        } else {
+            console.warn('No matching event found');
+            this.selectedEvent = null;
+        }
+    }
+
+    loadAttendanceData(event: CalendarEvent) {
+        // This is a placeholder. In a real application, you would fetch this data from a service.
+        this.attendanceData = [
+            { studentId: '001', name: 'John Doe', checkInTime: '09:00', status: 'Present' },
+            { studentId: '002', name: 'Jane Smith', checkInTime: '09:05', status: 'Present' },
+            { studentId: '003', name: 'Bob Johnson', checkInTime: '-', status: 'Absent' },
+            // Add more mock data as needed
+        ];
+    }
+
+    protected readonly courseRegistrationData = courseRegistrationData;
 }

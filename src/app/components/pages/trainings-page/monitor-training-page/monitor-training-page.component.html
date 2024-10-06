@@ -1,45 +1,91 @@
 <div class="container-fluid">
   <div class="row">
-
-    <!-- Main starts-->
-    <div class="col-sm-12" id="main-content">
-      <div class="card">
-        
-        <!-- list header-->
-        <div class="card-header table-wrapper d-flex justify-content-between align-items-center">
-          <h4 class="mb-0">Monitor</h4>
-          <div class="d-flex align-items-center">
-            <div class="me-4">
-              <a type="button" class="btn btn-primary me-2" (click)="onExport()">
-                Export
-              </a>
-              <a type="button" class="btn btn-primary" (click)="onImport()">
-                Import
-              </a>
-            </div>
-            <div>
-              <a type="button" class="btn btn-outline-primary btn-icon" (click)="onAddNew()">
-                <fa-icon [icon]="faPlus"></fa-icon> Add
-              </a>
-            </div>
+    <!-- Left Sidebar -->
+    <div class="col-md-3">
+      <!-- Small Calendar -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-sm btn-outline-primary" (click)="previousMonth()">
+              &lt; Previous
+            </button>
+            <h3 class="mb-0">{{ viewDate | date:'MMMM yyyy' }}</h3>
+            <button class="btn btn-sm btn-outline-primary" (click)="nextMonth()">
+              Next &gt;
+            </button>
           </div>
         </div>
-        
-        <!-- list body-->
+        <div class="card-body p-0">
+          <mwl-calendar-month-view
+              [viewDate]="viewDate"
+              [events]="events"
+              [activeDayIsOpen]="false"
+              (dayClicked)="dayClicked($event.day)"
+              (eventClicked)="selectEvent($event.event)"
+              [cellTemplate]="customCellTemplate">
+          </mwl-calendar-month-view>        </div>
+      </div>
+      
+      <!-- Event List -->
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Events for {{ viewDate | date:'mediumDate' }}</h5>
+        </div>
         <div class="card-body">
-            <ag-grid-angular
-                style="width: 100%; height: 100%;"
-                class="ag-theme-quartz"
-                [rowData]="trainingData"
-                [columnDefs]="columnDefs"
-                [defaultColDef]="defaultColDef"
-                domLayout='autoHeight'
-                (gridReady)="onGridReady($event)"
-                [pagination]="true"
-            >
-            </ag-grid-angular>
+          <ag-grid-angular
+              class="ag-theme-alpine"
+              [rowData]="rowData"
+              [columnDefs]="columnDefs"
+              [defaultColDef]="defaultColDef"
+              (gridReady)="onGridReady($event)"
+              (rowClicked)="selectEvent($event.data)"
+              domLayout="autoHeight">
+          </ag-grid-angular>        </div>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">{{ selectedEvent ? selectedEvent.title : 'Course Information' }}</h4>
+        </div>
+        <div class="card-body">
+          <div *ngIf="!selectedEvent" class="alert alert-info">
+            Please select a date and course from the calendar or event list.
+          </div>
+          <div *ngIf="selectedEvent">
+            <!-- Event Details -->
+            <p><strong>Date and Time:</strong> {{ selectedEvent.start | date: 'yyyy年MM月dd日 HH:mm' }} - {{ selectedEvent.end | date: 'HH:mm' }}</p>
+            <p><strong>Instructor:</strong> {{ getEventDetails(selectedEvent.id)?.instructor }}</p>
+            <p><strong>Participants:</strong> {{ getEventDetails(selectedEvent.id)?.participants }} / {{ getEventDetails(selectedEvent.id)?.maxParticipants }}</p>
+            <p><strong>Status:</strong> {{ getEventDetails(selectedEvent.id)?.status }}</p>
+          </div>
+          
+          <!-- Attendance Monitoring -->
+          <h5 class="mt-4">Attendance Monitoring</h5>
+          <div *ngIf="!selectedEvent" class="alert alert-info">
+            Attendance information will be displayed here once a course is selected.
+          </div>
+          <ag-grid-angular
+              *ngIf="selectedEvent"
+              class="ag-theme-alpine"
+              [rowData]="attendanceData"
+              [columnDefs]="attendanceColumnDefs"
+              [defaultColDef]="defaultColDef"
+              domLayout="autoHeight">
+          </ag-grid-angular>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- Custom Cell Template for Calendar -->
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top d-flex flex-column justify-content-between h-100">
+    <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    <div class="cal-events mt-auto" *ngIf="day.events.length > 0">
+      <div class="cal-event" *ngFor="let event of day.events" [style.backgroundColor]="event.color?.primary"></div>
+    </div>
+  </div>
+</ng-template>

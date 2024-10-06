@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AgGridAngular} from 'ag-grid-angular';
 import {ColDef, GridReadyEvent, GridApi, CellClassParams} from 'ag-grid-community';
 import {courseRegistrationData} from '../../common/data/course-registration';
+import {trainingData} from '../../common/data/trainings';
+
 import {UserTypeBadgeCellRenderer} from '../../common/user-type-badge-cell-renderer';
 import {ActionsCellRenderer} from "../../common/actions-cell-renderer";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
@@ -59,15 +61,19 @@ export class CourseRegistrationPageComponent {
             field: 'participants',
             headerName: 'Participants',
             flex: 1,
-            minWidth: 120,
+            width: 140,
+            maxWidth: 140,
             editable: true,
+            cellStyle: { textAlign: 'center' },
         },
         {
             field: 'maxParticipants',
-            headerName: 'Max Participants',
+            headerName: 'Max',
             flex: 1,
-            minWidth: 120,
+            width: 130,
+            maxWidth: 130,
             editable: true,
+            cellStyle: { textAlign: 'center' },
         },
         {
             field: 'status',
