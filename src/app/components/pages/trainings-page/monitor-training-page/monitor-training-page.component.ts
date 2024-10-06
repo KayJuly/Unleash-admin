@@ -185,5 +185,4 @@ export class MonitorTrainingPageComponent implements OnInit {
                 return { primary: '#9e9e9e', secondary: '#f5f5f5' };
         }
     }
-
 }

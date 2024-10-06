@@ -81,7 +81,7 @@ export const courseRegistrationData = [
     },
     {
         course: '3D Printer',
-        date: '2024-10-7',
+        date: '2024-10-07',
         time: {start: "10:00", end: "13:00"},
         instructor: "Kason Sanchez",
         participants: 15,
@@ -90,7 +90,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Laser Cutter',
-        date: '2024-10-7',
+        date: '2024-10-07',
         time: {start: "14:30", end: "17:30"},
         instructor: "Lay Haynes",
         participants: 9,
@@ -99,7 +99,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Vinyl cutter',
-        date: '2024-10-7',
+        date: '2024-10-07',
         time: {start: "09:00", end: "12:00"},
         instructor: "Lay Haynes",
         participants: 8,
@@ -108,7 +108,7 @@ export const courseRegistrationData = [
     },
     {
         course: 'Sewing machines',
-        date: '2024-10-9',
+        date: '2024-10-09',
         time: {start: "13:30", end: "16:30"},
         instructor: "Kason Sanchez",
         participants: 11,

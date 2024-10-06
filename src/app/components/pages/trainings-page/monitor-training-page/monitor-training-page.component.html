@@ -3,27 +3,29 @@
     <!-- Left Side -->
     <div class="col-md-3">
       <!-- Calendar -->
-      <div class="card mb-3">
-        <div class="card-header">
-          <div class="d-flex justify-content-between align-items-center">
-            <button class="btn btn-sm btn-outline-primary" (click)="previousMonth()">
-              &lt; Previous
-            </button>
-            <h3 class="mb-0">{{ viewDate | date:'MMMM yyyy' }}</h3>
-            <button class="btn btn-sm btn-outline-primary" (click)="nextMonth()">
-              Next &gt;
-            </button>
+      <div class="card mb-3" style="padding: 17px;">
+        <div class="monitor-training-calendar">
+          <div class="calendar-container">
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-sm btn-outline-primary" style="padding: 4px 8px;" (click)="previousMonth()">
+                &lt;
+              </button>
+              <h3 class="mb-0">{{ viewDate | date:'MMMM yyyy' }}</h3>
+              <button class="btn btn-sm btn-outline-primary" style="padding: 4px 8px;" (click)="nextMonth()">
+                &gt;
+              </button>
+            </div>
+            
+            <mwl-calendar-month-view
+                [viewDate]="viewDate"
+                [events]="events"
+                [activeDayIsOpen]="false"
+                (dayClicked)="dayClicked($event.day)"
+                (eventClicked)="selectEvent($event.event)"
+                [cellTemplate]="customCellTemplate">
+            </mwl-calendar-month-view>
           </div>
         </div>
-        <div class="card-body p-0">
-          <mwl-calendar-month-view
-              [viewDate]="viewDate"
-              [events]="events"
-              [activeDayIsOpen]="false"
-              (dayClicked)="dayClicked($event.day)"
-              (eventClicked)="selectEvent($event.event)"
-              [cellTemplate]="customCellTemplate">
-          </mwl-calendar-month-view>        </div>
       </div>
       
       <!-- Selected events -->
@@ -40,7 +42,8 @@
               (gridReady)="onGridReady($event)"
               (rowClicked)="selectEvent($event.data)"
               domLayout="autoHeight">
-          </ag-grid-angular>        </div>
+          </ag-grid-angular>
+        </div>
       </div>
     </div>
     
@@ -56,9 +59,11 @@
           </div>
           <div *ngIf="selectedEvent">
             <!-- Event Details -->
-            <p><strong>Date and Time:</strong> {{ selectedEvent.start | date: 'yyyy年MM月dd日 HH:mm' }} - {{ selectedEvent.end | date: 'HH:mm' }}</p>
+            <p><strong>Date and Time:</strong> {{ selectedEvent.start | date: 'yyyy年MM月dd日 HH:mm' }}
+              - {{ selectedEvent.end | date: 'HH:mm' }}</p>
             <p><strong>Instructor:</strong> {{ getEventDetails(selectedEvent.id)?.instructor }}</p>
-            <p><strong>Participants:</strong> {{ getEventDetails(selectedEvent.id)?.participants }} / {{ getEventDetails(selectedEvent.id)?.maxParticipants }}</p>
+            <p><strong>Participants:</strong> {{ getEventDetails(selectedEvent.id)?.participants }}
+              / {{ getEventDetails(selectedEvent.id)?.maxParticipants }}</p>
             <p><strong>Status:</strong> {{ getEventDetails(selectedEvent.id)?.status }}</p>
           </div>
           
