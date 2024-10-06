@@ -5,7 +5,7 @@ import { ColDef, GridReadyEvent, GridApi } from 'ag-grid-community';
 import { CalendarEvent, CalendarView, CalendarModule } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { courseRegistrationData } from '../../common/data/course-registration';
-import { addMonths, subMonths } from 'date-fns';
+import {addMonths, isSameDay, isSameMonth, subMonths} from 'date-fns';
 
 interface EventDetails {
     id: string;
@@ -29,6 +29,7 @@ interface EventDetails {
 export class MonitorTrainingPageComponent implements OnInit {
     @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
     private gridApi!: GridApi;
+    activeDayIsOpen: boolean = false;
 
     // Calendar properties
     view: CalendarView = CalendarView.Month;
@@ -72,20 +73,15 @@ export class MonitorTrainingPageComponent implements OnInit {
 
     loadEvents() {
         this.events = courseRegistrationData.map((registration, index) => {
-            const startDate = new Date(registration.date + 'T' + registration.time.start);
-            const endDate = new Date(registration.date + 'T' + registration.time.end);
+            const [year, month, day] = registration.date.split('-').map(Number);
+            const [startHour, startMinute] = registration.time.start.split(':').map(Number);
+            const [endHour, endMinute] = registration.time.end.split(':').map(Number);
 
-            const id = index.toString();
-            this.eventDetails.set(id, {
-                id,
-                instructor: registration.instructor,
-                participants: registration.participants,
-                maxParticipants: registration.maxParticipants,
-                status: registration.status
-            });
+            const startDate = new Date(year, month - 1, day, startHour, startMinute);
+            const endDate = new Date(year, month - 1, day, endHour, endMinute);
 
             return {
-                id,
+                id: index.toString(),
                 start: startDate,
                 end: endDate,
                 title: registration.course,
@@ -96,9 +92,19 @@ export class MonitorTrainingPageComponent implements OnInit {
         this.updateFilteredEvents();
     }
 
-    dayClicked({ date }: { date: Date }): void {
-        this.viewDate = date;
-        this.updateFilteredEvents();
+    dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+        if (isSameMonth(date, this.viewDate)) {
+            if (
+                (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+                events.length === 0
+            ) {
+                this.activeDayIsOpen = false;
+            } else {
+                this.activeDayIsOpen = true;
+            }
+            this.viewDate = date;
+        }
+        this.updateRowData();
     }
 
     previousMonth(): void {
