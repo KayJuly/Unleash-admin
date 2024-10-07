@@ -1,0 +1,44 @@
+.blog-list img {
+  padding: 0;
+}
+.blog-box .blog-date {
+  font-size: 14px;
+}
+.blog-box .blog-date span {
+  font-size: inherit;
+}
+
+.icon-size {
+  width: 12px;
+  height: 12px;
+}
+
+.icon-size {
+  width: 16px;
+  height: 16px;
+}
+
+.blog-social li {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.blog-social li i {
+  vertical-align: middle;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+.summary-card .summary-progressbar ul li {
+  padding: 0px 14px;
+  width: 100%;
+}
+
+.summary-card .summary-progressbar ul li span {
+  font-size: 14px;
+  font-weight: 600;
+}

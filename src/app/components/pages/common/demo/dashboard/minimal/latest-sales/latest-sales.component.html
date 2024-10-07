@@ -1,0 +1,22 @@
+<div class="card latest-sales">
+  <div class="card-header d-flex justify-content-between align-items-center custom-border-bottom">
+    <h4>Latest Sales</h4>
+    <div class="d-flex align-items-center justify-content-center latest-sales-btn">
+      <button class="btn btn-square btn-outline-primary btn-sm" type="button"
+        title="btn btn-square btn-outline-primary btn-sm">Yearly</button>
+      <button class="btn btn-square btn-outline-primary btn-sm" type="button"
+        title="btn btn-square btn-outline-primary btn-sm">Monthly</button>
+      <button class="btn btn-square btn-outline-primary btn-sm active" type="button"
+        title="btn btn-square btn-outline-primary btn-sm">Weekly</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div id="lastOrdersChart">
+      <apx-chart [series]="latestSales.series" [chart]="latestSales.chart" [legend]="latestSales.legend"
+        [grid]="latestSales.grid" [tooltip]="latestSales.tooltip" [colors]="latestSales.colors"
+        [plotOptions]="latestSales.plotOptions" [dataLabels]="latestSales.dataLabels" [yaxis]="latestSales.yaxis"
+        [xaxis]="latestSales.xaxis" [responsive]="latestSales.responsive">
+      </apx-chart>
+    </div>
+  </div>
+</div>

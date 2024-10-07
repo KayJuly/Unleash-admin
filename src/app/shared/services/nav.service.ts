@@ -42,7 +42,8 @@ export class NavService {
       active: true,
       children: [
         { path: "/dashboard-page", title: "Dashboard", type: "link" },
-        { path: "/dashboard-page/calendar", title: "Calendar", type: "link" },
+        { path: "/dashboard-page/analysis", title: "Analyze Demo", type: "link" },
+        // { path: "/dashboard-page/calendar", title: "Calendar", type: "link" },
       ],
     },
     {
@@ -67,7 +68,7 @@ export class NavService {
       children: [
         { path: "/trainings-page", title: "Training courses", type: "link" },
         { path: "/trainings-page/course-registration", title: "Course registration", type: "link" },
-        { path: "/trainings-page/calendar", title: "Courses Calendar", type: "link" },
+        { path: "/trainings-page/course-calendar", title: "Courses Calendar", type: "link" },
         { path: "/trainings-page/monitor-training", title: "Check-in Monitoring", type: "link" },
       ],
     },

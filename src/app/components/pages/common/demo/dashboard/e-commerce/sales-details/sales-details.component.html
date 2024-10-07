@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-header">
+        <div class="header-top">
+            <h4>Sales Details</h4>
+            <div class="sales-details">
+                <div class="user-activity">
+                    <ul>
+                        <li>
+                            <div class="applications-menu">
+                                <div class="rounded-btn-primary"></div>
+                                <h3>Running Orders</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="applications-menu">
+                                <div class="rounded-btn-secondary"> </div>
+                                <h3>Complete Delivery</h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+                    <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+                        <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+                        style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+                        <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+                        <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+                        <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="chart-dash-2-line" id="chart-dash-2-line">
+            <apx-chart [series]="chartDashLine.series" [chart]="chartDashLine.chart" [stroke]="chartDashLine.stroke"
+                [grid]="chartDashLine.grid" [fill]="chartDashLine.fill" [responsive]="chartDashLine.responsive"
+                [tooltip]="chartDashLine.tooltip" [annotations]="chartDashLine.annotations"
+                [legend]="chartDashLine.legend" [colors]="chartDashLine.colors" [yaxis]="chartDashLine.yaxis"
+                [yaxis]="chartDashLine.yaxis">
+            </apx-chart>
+        </div>
+    </div>
+</div>

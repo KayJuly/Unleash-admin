@@ -16,6 +16,8 @@ import {FlatpickrModule} from 'angularx-flatpickr';
 import {EventColor} from 'calendar-utils';
 import {addDays, addHours, endOfDay, endOfMonth, isSameDay, isSameMonth, startOfDay, subDays,} from 'date-fns';
 import {Subject} from 'rxjs';
+import {faEdit, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 const colors: Record<string, EventColor> = {
     red: {
@@ -33,13 +35,13 @@ const colors: Record<string, EventColor> = {
 };
 
 @Component({
-    selector: 'app-calender',
-    templateUrl: './calender-page.component.html',
-    styleUrls: ['./calender-page.component.scss'],
+    selector: 'app-course-calendar',
+    templateUrl: './course-calendar-page.component.html',
+    styleUrls: ['./course-calendar-page.component.scss'],
     standalone: true,
-    imports: [CalendarCommonModule, NgSwitch, NgSwitchCase, CalendarMonthModule, CalendarWeekModule, CalendarDayModule, FormsModule, FlatpickrModule, JsonPipe]
+    imports: [CalendarCommonModule, NgSwitch, NgSwitchCase, CalendarMonthModule, CalendarWeekModule, CalendarDayModule, FormsModule, FlatpickrModule, JsonPipe, FaIconComponent]
 })
-export class CalenderPageComponent {
+export class CourseCalendarPageComponent {
 
     @ViewChild('modalContent', {static: false})
 
@@ -212,7 +214,7 @@ export class CalenderPageComponent {
         this.modal.open(this.modalContent, {size: 'lg'});
     }
 
-    addEvent(): void {
+    onAddNew(): void {
         this.events = [
             ...this.events,
             {
@@ -229,7 +231,7 @@ export class CalenderPageComponent {
         ];
     }
 
-    deleteEvent(eventToDelete: CalendarEvent) {
+    onDelete(eventToDelete: CalendarEvent) {
         this.events = this.events.filter((event) => event !== eventToDelete);
     }
 
@@ -241,4 +243,7 @@ export class CalenderPageComponent {
         this.activeDayIsOpen = false;
     }
 
+    protected readonly faPlus = faPlus;
+    protected readonly faEdit = faEdit;
+    protected readonly faTrash = faTrash;
 }

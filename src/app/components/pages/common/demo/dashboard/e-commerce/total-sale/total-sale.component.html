@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-body selling-card">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="sale-card">
+            <div class="sale-date">
+              <h4>Total Sale</h4>
+              <a [routerLink]="['/ecommerce/order-history']"><span class="txt-primary f-w-700">(See all sales)</span></a>
+            </div><span class="f-w-700 f-14 pb-4">Jan 1,2024 - Jun 30,2022</span>
+            <div class="sale-data">
+              <ul>
+                <li>
+                  <h4>$654.85K</h4>
+                  <div class="sale-value">
+                    <app-common-svg-icon [icon]="'drop-menu'"></app-common-svg-icon>
+                    <div class="sales-value"><span class="txt-danger">95%</span><span>6 month before </span></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="latest-chart" id="latestSales-chart">
+            <apx-chart [series]="totalSale.series" [colors]="totalSale.colors" [chart]="totalSale.chart"
+            [grid]="totalSale.grid" [stroke]="totalSale.stroke" [fill]="totalSale.fill"
+            [markers]="totalSale.markers" [xaxis]="totalSale.xaxis" [yaxis]="totalSale.yaxis"
+            [tooltip]="totalSale.tooltip" [responsive]="totalSale.responsive">
+          </apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

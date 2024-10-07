@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header custom-border-bottom">
+    <div class="header-top">
+      <h4>Customer Growth</h4>
+      <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+        <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+          <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+          style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xxl-8">
+        <div class="map-world">
+          <div class="map">
+            <div class="jvector-map-height" id="world-map2" leaflet [leafletOptions]="options" style="height: 320px;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-4 d-xxl-block d-none">
+        <ul class="customer-growth">
+          @for (item of customerGrowth; track item) {
+          <li>
+            <div class="customer-details">
+              <div> <img [src]="item.image_url" alt="flag"></div>
+              <div>
+                <h6 class="f-w-600 f-14">{{item.country}}</h6><span class="f-w-600">{{item.width}}%</span>
+              </div>
+            </div>
+            <div class="progress progress-striped-primary b-r-2">
+              <div class="progress-bar" role="progressbar" [style.width.%]="item.width"></div>
+            </div>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

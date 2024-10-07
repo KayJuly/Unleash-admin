@@ -48,57 +48,50 @@
           }
           <br /><br /><br />
           <h3>
-<!--            Edit events-->
-            <button class="btn btn-primary float-end mb-2" (click)="addEvent()">Add new</button>
+            Edit Course
+              <a type="button" class="btn btn-outline-primary btn-icon float-end mb-2" (click)="onAddNew()">
+                <fa-icon [icon]="faPlus"></fa-icon> Add
+              </a>
             <div class="clearfix"></div>
           </h3>
-<!--          <div class="table-responsive custom-scrollbar">-->
-<!--            <table class="table table-bordered">-->
-<!--              <thead>-->
-<!--              <tr>-->
-<!--                <th>Title</th>-->
-<!--                <th>Primary color</th>-->
-<!--                <th>Secondary + text color</th>-->
-<!--                <th>Starts at</th>-->
-<!--                <th>Ends at</th>-->
-<!--                <th>Remove</th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--                @for(event of events; track event ){-->
-<!--                  <tr>-->
-<!--                    <td><input type="text" class="form-control" [(ngModel)]="event.title"-->
-<!--                               (keyup)="refresh.next()" /> </td>-->
-<!--                    <td>-->
-<!--                      @if(event.color){-->
-<!--                        <input type="color" [(ngModel)]="event.color.primary" (change)="refresh.next()" />-->
-<!--                      }-->
-<!--                    </td>-->
-<!--                    <td>-->
-<!--                      @if(event.color){-->
-<!--                        <input type="color" [(ngModel)]="event.color.secondary" (change)="refresh.next()" />-->
-<!--                        <input type="color" [ngModel]="event.color.secondaryText ?? '#1e90ff'"-->
-<!--                               (ngModelChange)="event.color.secondaryText = $event" (change)="refresh.next()" />-->
-<!--                      }-->
-<!--                    </td>-->
-<!--                    <td><input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"-->
-<!--                               (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"-->
-<!--                               [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"-->
-<!--                               placeholder="Not set" /></td>-->
-<!--                    <td>-->
-<!--                      <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"-->
-<!--                             (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"-->
-<!--                             [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"-->
-<!--                             placeholder="Not set" />-->
-<!--                    </td>-->
-<!--                    <td>-->
-<!--                      <button class="btn btn-danger" (click)="deleteEvent(event)">Delete</button>-->
-<!--                    </td>-->
-<!--                  </tr>-->
-<!--                }-->
-<!--              </tbody>-->
-<!--            </table>-->
-<!--          </div>-->
+          <div class="table-responsive custom-scrollbar">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th class="col-4">Course</th>
+                <th class="col-3">Starts at</th>
+                <th class="col-3">Ends at</th>
+                <th class="col-2 text-center">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for(event of events; track event ){
+                  <tr>
+                    <td><input type="text" class="form-control" [(ngModel)]="event.title"
+                               (keyup)="refresh.next()" /> </td>
+                    <td><input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
+                               (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                               [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+                               placeholder="Not set" /></td>
+                    <td>
+                      <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
+                             (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true"
+                             [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i"
+                             placeholder="Not set" />
+                    </td>
+                    <td class="text-center">
+                      <button class="btn btn-outline-primary btn-sm m-r-10" (click)="onDelete(event)">
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                      </button>
+                      <button class="btn btn-outline-danger btn-sm" (click)="onDelete(event)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                      </button>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
           <ng-template #modalContent let-close="close">
             <div class="modal-header">
               <h5 class="modal-title">Event action occurred</h5>

@@ -1,0 +1,59 @@
+<div class="card">
+  <div class="card-header pb-0">
+    <div class="header-top">
+      <h4>Sales Statistic</h4>
+      <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+        <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+          <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+          style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pt-0">
+    <div id="groupBarChart">
+      <apx-chart [series]="SalesData.series" [colors]="SalesData.colors" [chart]="SalesData.chart"
+      [plotOptions]="SalesData.plotOptions" [grid]="SalesData.grid" [dataLabels]="SalesData.dataLabels"
+      [stroke]="SalesData.stroke" [tooltip]="SalesData.tooltip" [yaxis]="SalesData.yaxis"
+      [xaxis]="SalesData.xaxis" [legend]="SalesData.legend" [responsive]="SalesData.responsive">
+    </apx-chart>
+    </div>
+    <div class="sales-data">
+      <ul>
+        <li>
+          <div class="total-sales">
+            <div>
+              <h5>$4,875 </h5><span>Total Sales </span>
+            </div>
+            <div class="total-reached"><span>1,00,00</span><span>85% goal reached</span></div>
+          </div>
+          <div class="progress-data">
+            <div class="progress sm-progress-bar progress-border-primary">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85"
+                aria-valuemin="0" aria-valuemax="100"> </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="total-sales">
+            <div>
+              <h5>$7,560</h5><span>Total Income</span>
+            </div>
+            <div class="total-reached"> <span>1,00,00</span><span>45% goal reached </span></div>
+          </div>
+          <div class="progress-data">
+            <div class="progress sm-progress-bar progress-border-secondary">
+              <div class="progress-bar bg-secondary" role="progressbar" style="width: 45%" aria-valuenow="45"
+                aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

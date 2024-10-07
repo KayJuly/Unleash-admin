@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <div class="header-top">
+            <h4>Recent Orders </h4>
+            <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+                <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+                    <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+                    style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+                    <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+                    <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+                    <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive custom-scrollbar">
+            <table class="last-orders-table table" id="last-orders">
+                <thead>
+                    <tr>
+                        <th class="checkbox-checked">
+                            <div class="form-check">
+                                <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="">
+                            </div>
+                        </th>
+                        <th>Product Name</th>
+                        <th>Date & Time </th>
+                        <th>Customer</th>
+                        <th>Price </th>
+                        <th>Status</th>
+                        <th>Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of recentOrder; track item) {
+                    <tr>
+                        <td class="checkbox-checked">
+                            <div class="form-check">
+                                <input class="form-check-input" id="flexCheckDefaults" type="checkbox" value="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-data">
+                                <div><img [src]="item.image_url" alt="product"></div>
+                                <div><a [routerLink]="['/ecommerce/products']">
+                                        <h4>{{item.product_name}}</h4>
+                                    </a>
+                                    <span class="f-w-600"> {{item.description}}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-time">
+                                <a [routerLink]="['/ecommerce/products']">
+                                    <h4>{{item.date}}</h4>
+                                </a>
+                                <span class="f-w-600"> {{item.time}} AM</span>
+                            </div>
+                        </td>
+                        <td>{{item.Customer}}</td>
+                        <td>$ {{item.Price}}</td>
+                        <td [class.txt-success]="item.Status === 'Succeed'"
+                            [class.txt-warning]="item.Status === 'Waiting'"
+                            [class.txt-danger]="item.Status === 'Canceled'">{{item.Status}}</td>
+                        <td>
+                            <div class="dropdown icon-dropdown" (clickOutside)="item.isShow = false">
+                                <button class="btn dropdown-toggle" (click)="toggleDropdown(item.id)"
+                                    [class.show]="item.isShow">
+                                    <div class="drop-menu"><i class="icon-more-alt"></i></div>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" [class.show]="item.isShow" style="position: absolute;
+                                 inset: 0px 0px auto auto;
+                                 margin: 0px;
+                                 transform: translate(0px, 22px);">
+                                    <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

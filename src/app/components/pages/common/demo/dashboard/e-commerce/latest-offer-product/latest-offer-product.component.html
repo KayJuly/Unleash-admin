@@ -1,0 +1,81 @@
+<div class="card">
+  <div class="card-header">
+    <div class="header-top">
+      <h4>Latest Offer Product</h4>
+      <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+        <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+          <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+          style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body product-page-main pt-0">
+    <div class="row">
+      <div class="col-lg-6">
+        <ks-carousel [id]="101" [images]="imagesRect">
+        </ks-carousel>
+      </div>
+      <div class="col-lg-6">
+        <div class="product-details">
+          <a [routerLink]="['/ecommerce/product-page']">
+            <h4>Apple iphone 13 Mini (512 GB) Green </h4>
+          </a>
+          <div class="product-Price">
+            <h2 class="txt-primary">$89,999 </h2>
+            <div>
+              <del>$1,19,999</del>
+            </div>
+          </div>
+          <div class="d-flex gap-2 variants-title"> <span>Color :</span><span>Green</span></div>
+          <div class="color-variants">
+            <div class="form-check radio radio-primary">
+              <input class="form-check-input" id="radio22" type="radio" name="radio1" value="option1" checked="">
+              <label class="form-check-label" for="radio22"></label>
+            </div>
+            <div class="form-check radio radio-secondary">
+              <input class="form-check-input" id="radio23" type="radio" name="radio1" value="option2">
+              <label class="form-check-label" for="radio23"></label>
+            </div>
+            <div class="form-check radio radio-warning">
+              <input class="form-check-input" id="radio24" type="radio" name="radio1" value="option3">
+              <label class="form-check-label" for="radio24"></label>
+            </div>
+            <div class="form-check radio radio-info">
+              <input class="form-check-input" id="radio25" type="radio" name="radio1" value="option4">
+              <label class="form-check-label" for="radio25"></label>
+            </div>
+            <div class="form-check radio radio-danger">
+              <input class="form-check-input" id="radio27" type="radio" name="radio1" value="option6">
+              <label class="form-check-label" for="radio27"></label>
+            </div>
+          </div>
+          <div class="d-flex gap-2 variants-title"><span>Size :</span><span>512GB </span></div>
+          <div class="variants-button">
+            <button class="btn btn-outline-primary btn-md me-2" type="button"
+              title="btn btn-pill btn-outline-primary btn-md">512GB</button>
+            <button class="btn btn-outline-lights btn-md txt-dark" type="button"
+              title="btn btn-pill btn-outline-light btn-md">256GB</button>
+          </div>
+          <div class="discount-box">
+            <h6>Special Discount</h6>
+          </div>
+          <h3 class="text-truncate">Deal of the Day From</h3>
+          <div class="countdown" id="clock-arrival" data-hours="1" data-minutes="2" data-seconds="3">
+            <ul>
+              <li><span class="days time" id="days"></span><span class="title">Days</span></li>
+              <li><span class="hours time" id="hours"></span><span class="title">Hours</span></li>
+              <li class="px-3"><span class="minutes time" id="minutes"></span><span class="title">Min</span></li>
+              <li class="px-3"><span class="seconds time" id="seconds"></span><span class="title">Sec</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

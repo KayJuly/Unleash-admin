@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    <div class="header-top">
+      <h4>Monthly Invoices</h4>
+      <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+        <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+          <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+          style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pt-0">
+    <div class="monthly-invoices">
+      <ul>
+        @for (item of monthlyInvoices; track item) {
+        <li>
+          <div class="monthly-data">
+            <div class="invoice-data-icon"><span>
+                <app-common-svg-icon [icon]="item.svg"></app-common-svg-icon>
+              </span>
+              <div>
+                <a [routerLink]="['/invoice/invoice1']">
+                  <h4>{{item.title}}</h4>
+                </a>
+                <h5>{{item.description}}</h5>
+              </div>
+            </div>
+            <div class="invoice-price"><span>${{item.price}}</span><span>Per Month</span></div>
+          </div>
+        </li>
+        }
+        <li>
+          <button class="btn btn-outline-light txt-dark active w-100" type="button">
+            <a class="d-flex gap-2 align-items-center" [routerLink]="['/project/list']">
+              <app-common-svg-icon [icon]="'Plus-Circle'"></app-common-svg-icon>
+              Add Project</a></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="card-header pb-0">
+    <div class="header-top">
+      <h4>Project Summary </h4>
+      <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+        <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+          <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+          style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive custom-scrollbar">
+      <table class="project-summary table" id="project-summary">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Project Name</th>
+            <th>Team</th>
+            <th>Project Cost</th>
+            <th>Project Status</th>
+            <th>Payment</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of projectSummary; track item) {
+          <tr>
+            <td class="f-w-600">{{item.id}}</td>
+            <td> <a [routerLink]="['/project/list']">{{item.project_name}}</a></td>
+            <td class="team-avtar">
+              <div class="customers d-inline-block avatar-group">
+                <ul>
+                  @for (items of item.team; track items) {
+                  <li class="d-inline-block">
+                    <img class="img-40 rounded-circle" [src]="items.image_url" alt="">
+                  </li>
+                  }
+                  @if (item.more) {
+                  <li class="d-inline-block">
+                    <p>{{item.more}}+</p>
+                  </li>
+                  }
+                </ul>
+              </div>
+            </td>
+            <td>${{item.project_cost}}</td>
+            <td>{{item.project_status}}</td>
+            <td [ngClass]="item.project_status === 'Completed' ? 'txt-success':'txt-danger'">{{item.project_status === 'Completed' ? 'Done':'Pending'}}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

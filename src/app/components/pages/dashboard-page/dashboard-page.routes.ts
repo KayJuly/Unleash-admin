@@ -1,4 +1,5 @@
 import {Routes} from '@angular/router';
+import {analysisRoutes} from "./analysis-page/analysis-page.routes";
 
 export default [
     {
@@ -11,12 +12,12 @@ export default [
         },
     },
     {
-        path: "calendar",
+        path: "analysis",
         loadChildren: () =>
-            import("./calendar-page/calender-page.routes").then((m) => m.calendarRoutes),
+            import("./analysis-page/analysis-page.routes").then((m) => m.analysisRoutes),
         data: {
-            title: "Calendar",
-            breadcrumb: "Calendar",
+            title: "Analysis",
+            breadcrumb: "Analysis",
         },
     }
 ] as Routes;

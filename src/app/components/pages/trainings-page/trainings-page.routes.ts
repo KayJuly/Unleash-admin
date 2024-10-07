@@ -15,17 +15,17 @@ export default [
         loadChildren: () =>
             import("./course-registration-page/course-registration-page.routes").then((m) => m.courseRegistrationRoutes),
         data: {
-            title: "Trainings",
-            breadcrumb: "Trainings",
+            title: "Course registration",
+            breadcrumb: "Course registration",
         },
     },
     {
-        path: "calendar",
+        path: "course-calendar",
         loadChildren: () =>
-            import("../dashboard-page/calendar-page/calender-page.routes").then((m) => m.calendarRoutes),
+            import("./course-calendar-page/course-calendar-page.routes").then((m) => m.courseCalendarRoutes),
         data: {
-            title: "Trainings",
-            breadcrumb: "Trainings",
+            title: "Course Calendar",
+            breadcrumb: "Course Calendar",
         },
     },
     {
@@ -33,8 +33,8 @@ export default [
         loadChildren: () =>
             import("./monitor-training-page/monitor-training-page.routes").then((m) => m.monitorTrainingRoutes),
         data: {
-            title: "Trainings",
-            breadcrumb: "Trainings",
+            title: "Monitor training",
+            breadcrumb: "Monitor training",
         },
     }
 ] as Routes;

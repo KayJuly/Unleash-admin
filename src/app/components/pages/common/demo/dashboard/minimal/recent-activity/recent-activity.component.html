@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header pb-0">
+    <div class="header-top">
+      <h4>Recent Activity</h4>
+      <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+        <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+          <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+          style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+          <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+          <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    @for (item of recentActivity; track item;let i = $index) {
+    <div class="activity-day" [class.mt-4]="i === 1">
+      <h6>{{item.title}}</h6>
+    </div>
+    <div class="recent-activity-card">  
+      <ul>
+        @for (items of item.data; track items) {
+        <li [class]="items.autoClass">
+          <div class="recent-activity-data">
+            <div class="activity-name"><span>
+                <app-common-svg-icon [icon]="items.svg"></app-common-svg-icon>
+              </span>
+              <a [routerLink]="['/letter-box']">{{items.title}}</a>
+            </div>
+            <div class="view-btn"><a href="#!">View
+                <app-common-svg-icon [icon]="'Arrow-Right-2'"></app-common-svg-icon>
+              </a>
+            </div>
+          </div>
+        </li>
+        }
+      </ul>
+    </div>
+    }
+  </div>
+</div>

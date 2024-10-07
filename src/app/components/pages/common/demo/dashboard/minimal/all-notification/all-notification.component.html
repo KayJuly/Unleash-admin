@@ -1,0 +1,44 @@
+<div class="card">
+    <div class="card-header">
+        <div class="header-top">
+            <h4>All Notification (10)</h4>
+            <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+                <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+                    <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+                    style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+                    <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+                    <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+                    <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-0">
+        <div class="notification-card">
+            <ul>
+                @for (item of allNotification; track item) {
+                <li>
+                    <div class="user-notification">
+                        <div>
+                            <img [src]="item.image_url" alt="avatar">
+                        </div>
+                        <div class="user-description">
+                            <a [routerLink]="['/email/letter-box']">
+                                <h4>{{item.notifications}}</h4>
+                            </a>
+                            <span>Today {{item.time}}pm</span>
+                        </div>
+                    </div>
+                    <div class="notification-btn">
+                        <button class="btn btn-pill btn-primary" type="button" title="btn btn-pill btn-primary">Accept</button>
+                        <button class="btn btn-pill btn-secondary" type="button" title="btn btn-pill btn-primary">Decline</button>
+                    </div>
+                    <div class="show-btn"><a [routerLink]="['/dashboard/minimal']"> <span>Show</span></a></div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

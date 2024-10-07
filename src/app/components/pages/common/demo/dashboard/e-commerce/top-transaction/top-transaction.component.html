@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        <div class="header-top">
+            <h4>Top Transaction</h4>
+            <div class="dropdown icon-dropdown setting-menu" (clickOutside)="isOpen = false">
+                <button class="btn dropdown-toggle" type="button" (click)="isOpen =!isOpen" [class.show]="isOpen">
+                    <app-common-svg-icon [icon]="'setting'"></app-common-svg-icon>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen"
+                    style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate(0px, 30px);">
+                    <a class="dropdown-item" href="javascript:void(0)">Weekly </a>
+                    <a class="dropdown-item" href="javascript:void(0)">Monthly </a>
+                    <a class="dropdown-item" href="javascript:void(0)">Yearly </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive custom-scrollbar">
+            <table class="last-orders-table table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Date</th>
+                        <th>Payment</th>
+                        <th>Purchase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of topTransaction; track item) {
+                    <tr>
+                        <td>
+                            <div class="user-data">
+                                <div><img [src]="item.image_url" alt="product"></div>
+                                <div><a [routerLink]="['/ecommerce/products']">
+                                        <h4>{{item.product_name}}</h4>
+                                    </a><span> #{{item.id}}</span></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user-time"><a [routerLink]="['/ecommerce/products']">
+                                    <h4>{{item.date}}</h4>
+                                </a></div>
+                        </td>
+                        <td>{{item.payment}}</td>
+                        <td>${{item.purchase}}</td>
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

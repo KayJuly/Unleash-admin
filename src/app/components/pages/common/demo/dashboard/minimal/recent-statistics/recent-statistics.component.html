@@ -1,0 +1,46 @@
+<div class="card custom-statistics">
+  <div class="card-header">
+    <div class="header-top">
+      <h4>Recent Statistics </h4>
+      <div class="dropdown" (clickOutside)="isOpen = false">
+        <button class="btn dropdown-toggle custom-date-btn" (click)="isOpen =!isOpen" type="button"
+          [class.show]="isOpen" data-bs-toggle="dropdown" aria-expanded="false"><span>19 Aug - 25 Aug</span>
+          <div class="custom-date">
+            <app-common-svg-icon [icon]="'Left-Arrow'"></app-common-svg-icon>
+            <app-common-svg-icon [icon]="'Right-Arrow'"></app-common-svg-icon>
+          </div>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end" [class.show]="isOpen" style="position: absolute;
+        inset: 0px 0px auto auto;
+        margin: 0px;
+        transform: translate(0px, 39px);">
+          <a class="dropdown-item" href="javascript:void(0)">11 Aug - 21 Aug</a><a class="dropdown-item" href="javascript:void(0)">07 Sep - 23
+            Sep</a><a class="dropdown-item" href="javascript:void(0)">01 Otc - 15 Otc</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pb-0 pt-0">
+    <div class="recent-statistics">
+      <ul>
+        <li>
+          <div class="arrow-up">
+            <app-common-svg-icon [icon]="'Arrow-Up'"></app-common-svg-icon>
+          </div><span>$5.850</span>
+        </li>
+        <li>
+          <div class="arrow-down">
+            <app-common-svg-icon [icon]="'Arrow-Down'"></app-common-svg-icon>
+          </div><span>$1.750</span>
+        </li>
+      </ul>
+    </div>
+    <div id="orderoverview">
+      <apx-chart [series]="recentStatistics.series" [chart]="recentStatistics.chart" [stroke]="recentStatistics.stroke"
+        [grid]="recentStatistics.grid" [plotOptions]="recentStatistics.plotOptions" [colors]="recentStatistics.colors"
+        [fill]="recentStatistics.fill" [labels]="recentStatistics.labels" [markers]="recentStatistics.markers"
+        [xaxis]="recentStatistics.xaxis" [legend]="recentStatistics.legend" [yaxis]="recentStatistics.yaxis"
+        [tooltip]="recentStatistics.tooltip" [responsive]="recentStatistics.responsive">
+      </apx-chart>
+    </div>
+  </div>
+</div>
