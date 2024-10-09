@@ -5,39 +5,65 @@
 
     ::ng-deep {
       .cal-month-view {
-        .cal-header {
-          font-size: 0.75rem;
-          font-weight: bold;
-        }
-
-        .cal-cell-row {
-          height: 45px;
-        }
-
-        .cal-cell {
-          min-height: 45px;
-        }
-
         .cal-day-cell {
           min-height: 45px;
+          position: relative;
         }
 
         .cal-day-number {
           font-size: 0.8rem;
-          margin: 5px;
+          margin: 2px;
           opacity: 0.7;
-          float: left;
+          position: absolute;
+          top: 2px;
+          left: 2px;
+        }
+
+        .cal-day-badge {
+          position: absolute;
+          top: 18px;
+          right: 2px;
+          margin: 0;
+          padding: 2px 4px;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          border-radius: 10px;
         }
 
         .cal-events {
-          margin-top: 22px;
+          position: absolute;
+          bottom: 2px;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         .cal-event {
-          width: 6px;
-          height: 6px;
+          width: 4px;
+          height: 4px;
           border-radius: 50%;
           margin: 0 1px;
+        }
+        .cal-day-badge {
+          margin-top: 2px;
+          margin-left: 2px;
+          display: inline-block;
+          min-width: 10px;
+          padding: 2px 4px;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          border-radius: 10px;
+          float: right;
         }
 
         .cal-today {

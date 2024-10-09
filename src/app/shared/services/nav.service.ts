@@ -72,6 +72,18 @@ export class NavService {
         { path: "/trainings-page/monitor-training", title: "Check-in Monitoring", type: "link" },
       ],
     },
+    {
+      id: 5,
+      level: 1,
+      title: "Gradebook",
+      icon: "learning",
+      type: "sub",
+      active: false,
+      children: [
+        { path: "/trainings-page", title: "Gradebook update", type: "link" },
+        { path: "/trainings-page", title: "Report", type: "link" },
+      ],
+    },
     // { level: 1, id: 12, path: "/task", bookmark: true, title: "Tasks", icon: "task", type: "link" },
   ]
 

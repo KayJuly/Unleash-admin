@@ -6,6 +6,17 @@ import { CalendarEvent, CalendarView, CalendarModule } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import { courseRegistrationData } from '../../common/data/course-registration';
 import {addMonths, isSameDay, isSameMonth, subMonths} from 'date-fns';
+import {
+    WeeklyUserActivityComponent
+} from "../../common/demo/dashboard/e-commerce/weekly-user-activity/weekly-user-activity.component";
+import {UserTypeBadgeCellRenderer} from "../../common/user-type-badge-cell-renderer";
+import {quizBadgeCellRenderer} from "../../common/quiz-badge-cell-renderer";
+import {TrainingsCellRenderer} from "../../common/trainings-cell-renderer";
+import {ActionsCellRenderer} from "../../common/actions-cell-renderer";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {userData} from "../../common/data/user";
+import {CheckinBadgeCellRenderer} from "../../common/checkin-badge-cell-renderer";
 
 interface EventDetails {
     id: string;
@@ -23,7 +34,9 @@ interface EventDetails {
     imports: [
         CommonModule,
         AgGridAngular,
-        CalendarModule
+        CalendarModule,
+        WeeklyUserActivityComponent,
+        FaIconComponent
     ]
 })
 export class MonitorTrainingPageComponent implements OnInit {
@@ -48,15 +61,43 @@ export class MonitorTrainingPageComponent implements OnInit {
     // Attendance properties
     attendanceData: any[] = [];
     attendanceColumnDefs: ColDef[] = [
-        { field: 'studentId', headerName: 'Student ID' },
-        { field: 'name', headerName: 'Name' },
-        { field: 'checkInTime', headerName: 'Check-in Time' },
-        { field: 'status', headerName: 'Status' }
+        {
+            field: 'name',
+            headerName: 'Name',
+            flex: 1,
+            minWidth: 150,
+            editable: true,
+        },
+        {field: 'studentId', headerName: 'UPI', flex: 1, width: 150, maxWidth: 150, editable: true},
+        {field: 'checkInTime', headerName: 'Check-in Time', flex: 1, width: 200, maxWidth: 200, editable: true},
+        {
+            field: 'status',
+            headerName: 'Status',
+            flex: 1,
+            minWidth: 150,
+            editable: true,
+            cellRenderer:CheckinBadgeCellRenderer
+        },
+        {
+            headerName: 'Actions',
+            cellRenderer: ActionsCellRenderer,
+            cellRendererParams: {
+                clicked: (field: string) => {
+                    alert(`${field} was clicked`);
+                },
+            },
+            width: 100, maxWidth: 100,
+            flex: 0.5,
+            sortable: false,
+            filter: false
+        }
     ];
     defaultColDef: ColDef = {
         sortable: true,
         filter: true,
-        resizable: true
+        resizable: true,
+        minWidth: 100,
+        flex: 1
     };
 
     // Additional event details
@@ -171,9 +212,21 @@ export class MonitorTrainingPageComponent implements OnInit {
 
     loadAttendanceData(event: CalendarEvent) {
         this.attendanceData = [
-            { studentId: '001', name: 'John Doe', checkInTime: '09:00', status: 'Present' },
-            { studentId: '002', name: 'Jane Smith', checkInTime: '09:05', status: 'Present' },
-            { studentId: '003', name: 'Bob Johnson', checkInTime: '-', status: 'Absent' },
+            { studentId: 'hfde0021', name: 'John Doe', checkInTime: '09:00', status: 'Checked' },
+            { studentId: 'jedc0123', name: 'Jane Smith', checkInTime: '-', status: 'Not arrived' },
+            { studentId: 'bbfh1234', name: 'Bob Johnson', checkInTime: '-', status: 'Absent' },
+            { studentId: 'hfde0021', name: 'John Doe', checkInTime: '09:00', status: 'Checked' },
+            { studentId: 'jedc0123', name: 'Jane Smith', checkInTime: '-', status: 'Not arrived' },
+            { studentId: 'bbfh1234', name: 'Bob Johnson', checkInTime: '-', status: 'Absent' },
+            { studentId: 'hfde0021', name: 'John Doe', checkInTime: '09:00', status: 'Checked' },
+            { studentId: 'jedc0123', name: 'Jane Smith', checkInTime: '09:05', status: 'Checked' },
+            { studentId: 'bbfh1234', name: 'Bob Johnson', checkInTime: '-', status: 'Absent' },
+            { studentId: 'hfde0021', name: 'John Doe', checkInTime: '09:00', status: 'Checked' },
+            { studentId: 'jedc0123', name: 'Jane Smith', checkInTime: '09:05', status: 'Checked' },
+            { studentId: 'bbfh1234', name: 'Bob Johnson', checkInTime: '-', status: 'Absent' },
+            { studentId: 'hfde0021', name: 'John Doe', checkInTime: '09:00', status: 'Checked' },
+            { studentId: 'jedc0123', name: 'Jane Smith', checkInTime: '09:05', status: 'Checked' },
+            { studentId: 'bbfh1234', name: 'Bob Johnson', checkInTime: '-', status: 'Absent' },
         ];
     }
 
@@ -191,4 +244,7 @@ export class MonitorTrainingPageComponent implements OnInit {
                 return { primary: '#9e9e9e', secondary: '#f5f5f5' };
         }
     }
+
+    protected readonly faPlus = faPlus;
+    protected readonly userData = userData;
 }

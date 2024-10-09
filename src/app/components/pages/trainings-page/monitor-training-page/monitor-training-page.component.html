@@ -27,59 +27,95 @@
           </div>
         </div>
       </div>
-      
-      <!-- Selected events -->
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title mb-0">Events for {{ viewDate | date:'mediumDate' }}</h5>
-        </div>
-        <div class="card-body">
-          <ag-grid-angular
-              class="ag-theme-alpine"
-              [rowData]="rowData"
-              [columnDefs]="columnDefs"
-              [defaultColDef]="defaultColDef"
-              (gridReady)="onGridReady($event)"
-              (rowClicked)="selectEvent($event.data)"
-              domLayout="autoHeight">
-          </ag-grid-angular>
-        </div>
-      </div>
+    
     </div>
     
     <!-- Main Content -->
     <div class="col-md-9">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title mb-0">{{ selectedEvent ? selectedEvent.title : 'Course Information' }}</h4>
+          <!--          <h4 class="card-title mb-0">{{ selectedEvent ? selectedEvent.title : 'Course Information' }}</h4>-->
         </div>
         <div class="card-body">
-          <div *ngIf="!selectedEvent" class="alert alert-info">
+          <div *ngIf="!selectedEvent" class="alert alert-primary">
             Please select a date and course from the calendar or event list.
           </div>
           <div *ngIf="selectedEvent">
             <!-- Event Details -->
-            <p><strong>Date and Time:</strong> {{ selectedEvent.start | date: 'yyyy年MM月dd日 HH:mm' }}
-              - {{ selectedEvent.end | date: 'HH:mm' }}</p>
-            <p><strong>Instructor:</strong> {{ getEventDetails(selectedEvent.id)?.instructor }}</p>
-            <p><strong>Participants:</strong> {{ getEventDetails(selectedEvent.id)?.participants }}
-              / {{ getEventDetails(selectedEvent.id)?.maxParticipants }}</p>
-            <p><strong>Status:</strong> {{ getEventDetails(selectedEvent.id)?.status }}</p>
+            <div class="card p-0">
+              <div class="card-header">
+                <h3 class="card-title mb-0"><span class="badge badge-warning px-2">In Progress</span>
+                  {{ selectedEvent ? selectedEvent.title : 'Course Information' }}</h3>
+              </div>
+              <div class="card-body">
+                <div class="blog-box blog-list row">
+                  <div class="col-sm-3">
+                    <img alt="" src="assets/images/faq/2.jpg" class="img-fluid sm-100-w"></div>
+                  <div class="col-sm-7">
+                    <div class="blog-details">
+                      <div class="blog-date d-flex gap-3">
+                        <span>{{ selectedEvent.start | date: 'dd/MM/yyyy HH:mm' }}</span>
+                      </div>
+                      <h4 style="margin-top: 16px;"><i class="icon-location-pin"></i>Kura Matahuna Unleash Space</h4>
+                      <h4 class="" style="margin-left: 10px">Instructor: Hellen Davenport</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-xxl-4">
+                <app-weekly-user-activity></app-weekly-user-activity>
+              </div>
+              <div class="col-xxl-4">
+                <app-weekly-user-activity></app-weekly-user-activity>
+              </div>
+              <div class="col-xxl-4">
+                <app-weekly-user-activity></app-weekly-user-activity>
+              </div>
+            </div>
           </div>
           
-          <!-- Attendance Monitoring -->
-          <h5 class="mt-4">Attendance Monitoring</h5>
-          <div *ngIf="!selectedEvent" class="alert alert-info">
+          <div *ngIf="!selectedEvent" class="alert alert-primary">
             Attendance information will be displayed here once a course is selected.
           </div>
-          <ag-grid-angular
-              *ngIf="selectedEvent"
-              class="ag-theme-alpine"
-              [rowData]="attendanceData"
-              [columnDefs]="attendanceColumnDefs"
-              [defaultColDef]="defaultColDef"
-              domLayout="autoHeight">
-          </ag-grid-angular>
+          <div *ngIf="selectedEvent">
+            <div class="card">
+              <div class="card-header table-wrapper d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">Attendance Monitoring</h4>
+                <div class="d-flex align-items-center">
+                  <div class="me-4">
+                    <a type="button" class="btn btn-primary me-2">
+                      Export
+                    </a>
+                    <a type="button" class="btn btn-primary">
+                      Import
+                    </a>
+                  </div>
+                  <!--                  <div>-->
+                  <!--                    <a type="button" class="btn btn-outline-primary btn-icon">-->
+                  <!--                      <fa-icon [icon]="faPlus"></fa-icon>-->
+                  <!--                      Add-->
+                  <!--                    </a>-->
+                  <!--                  </div>-->
+                </div>
+              </div>
+              <!-- list body-->
+              <div class="card-body">
+                <ag-grid-angular
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-quartz"
+                    *ngIf="selectedEvent"
+                    [rowData]="attendanceData"
+                    [columnDefs]="attendanceColumnDefs"
+                    [defaultColDef]="defaultColDef"
+                    domLayout='autoHeight'
+                    [pagination]="true"
+                >
+                </ag-grid-angular>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
